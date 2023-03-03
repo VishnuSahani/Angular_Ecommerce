@@ -1,0 +1,189 @@
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+
+            <div class="d-flex justify-content-between my-3">
+                <span>Add Product</span>
+                <button class="btn btn-sm btn-success" [routerLink]="['/adminPanal/product']" routerLinkActive="router-link-active" >Show Product</button>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-body">
+
+            <form [formGroup]="productForm" (ngSubmit)="productFormSubmit()">
+                <div class="form-row">
+
+                    <!-- category type -->
+                    <div class="form-group col-xl-6 col-lg-6 col-12">
+                        <mat-form-field class="w-100">
+                            <mat-label>Select Category Type *</mat-label>
+                            <mat-select formControlName="categoryId" #categoryId>
+                              <mat-option *ngFor="let item of categoryList" [value]="item.id">
+                                {{item.category_name}}
+                              </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <span  *ngIf="productForm.controls.categoryId.invalid && productForm.controls.categoryId.touched" class="font12-error">Category Type Required *</span>
+
+                    </div>
+
+                    <!-- product name -->
+
+                    <div class="form-group col-xl-6 col-lg-6 col-12">
+
+                        <mat-form-field class="w-100">
+                            <input matInput type="text" name="productName" formControlName="productName" placeholder="Product Name *">
+                            <button mat-button *ngIf="productForm.controls.productName.value !=''" matSuffix mat-icon-button aria-label="Clear"
+                                (click)="nullProductName('productName')">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <span  *ngIf="productForm.controls.productName.invalid && productForm.controls.productName.touched" class="font12-error">Product Name Required *</span>
+
+
+                    </div>
+
+
+                    <!-- product details -->
+
+                    <div class="form-group col-xl-12 col-lg-12 col-12">
+
+                        <mat-form-field class="w-100">
+                            <input matInput type="text" name="productDetails" formControlName="productDetails" placeholder="Product Details *">
+                            <button mat-button *ngIf="productForm.controls.productDetails.value !=''" matSuffix mat-icon-button aria-label="Clear"
+                            (click)="nullProductName('productDetails')">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <span  *ngIf="productForm.controls.productDetails.invalid && productForm.controls.productDetails.touched" class="font12-error">Product Details Required *</span>
+
+                    </div>
+
+                    <!-- price -->
+
+                    <div class="form-group col-xl-6 col-lg-6 col-12">
+
+                        <mat-form-field class="w-100">
+                            <input matInput type="text" name="price" formControlName="price" placeholder="Price *">
+                            <button mat-button *ngIf="productForm.controls.price.value !=''" matSuffix mat-icon-button aria-label="Clear"
+                                (click)="nullProductName('price')">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <span  *ngIf="productForm.controls.price.invalid && productForm.controls.price.touched" class="font12-error">Product Price Required and In Integer Format*</span>
+
+                    </div>
+
+                    <!-- quantity -->
+
+                    <div class="form-group col-xl-6 col-lg-6 col-12">
+
+                        <mat-form-field class="w-100">
+                            <input matInput type="text" name="quantity" formControlName="quantity" placeholder="Quantity *">
+                            <button mat-button *ngIf="productForm.controls.quantity.value !=''" matSuffix mat-icon-button aria-label="Clear"
+                                (click)="nullProductName('quantity')">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <span  *ngIf="productForm.controls.quantity.invalid && productForm.controls.quantity.touched" class="font12-error">Product Quantity Required and In Integer Format*</span>
+
+                    </div>
+
+                    <!-- discount type -->
+
+                    <div class="form-group col-xl-4 col-lg-4 col-12">
+                        <mat-form-field class="w-100">
+                            <mat-label>Select Discount Type</mat-label>
+                            <mat-select formControlName="discountType">
+                              <mat-option *ngFor="let item of discountTypeList" [value]="item">
+                                {{item}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+
+                    </div>
+
+
+                    <!-- Discount -->
+
+                    <div class="form-group col-xl-4 col-lg-4 col-12">
+
+                        <mat-form-field class="w-100">
+                            <input matInput type="text" name="discount" formControlName="discount" placeholder="Discount *">
+                            <button mat-button *ngIf="productForm.controls.discount.value !=''" matSuffix mat-icon-button aria-label="Clear"
+                                (click)="nullProductName('discount')">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+
+                        <span  *ngIf="productForm.controls.discount.invalid && productForm.controls.discount.touched" class="font12-error">Product Discount Required and In Integer Format*</span>
+
+
+                    </div>
+
+
+                     <!-- Rating -->
+
+                     <div class="form-group col-xl-4 col-lg-4 col-12">
+
+                        <mat-form-field class="w-100">
+                            <input matInput type="text" name="rating" formControlName="rating" placeholder="Rating *">
+                            <button mat-button *ngIf="productForm.controls.rating.value !=''" matSuffix mat-icon-button aria-label="Clear"
+                                (click)="nullProductName('rating')">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <span  *ngIf="productForm.controls.rating.invalid && productForm.controls.rating.touched" class="font12-error">Product Rating value Required and In Integer Format*</span>
+
+                    </div>
+
+                        <div class="form-group col-6 d-flex flex-column" *ngIf="!isedit">
+
+                            <label for="categoryImg">Select Category Image <span class="text-danger">*</span></label>
+
+                            <input type="file" id="categoryImg" (change)="handleFileSelect($event)">
+
+
+                        </div>
+                        <div class="col-6 form-group text-center border" *ngIf="imageShow">
+                            <img [src]="imageShow" alt="" class="img-fluid" style="height:200px;">
+                        </div>
+
+                    <!-- Is Description -->
+
+                    <div class="form-group col-12">
+                        <mat-checkbox formControlName="isDescription">Is Description!</mat-checkbox>
+                    </div>
+
+
+                        <!-- description -->
+
+                    <div class="form-group col-12" *ngIf="productForm.controls.isDescription.value">
+
+                        <mat-form-field class="w-100">
+                            <textarea matInput formControlName="description" placeholder="Product Description *"></textarea>
+                          </mat-form-field>
+
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <button class="btn btn-success" [disabled]="productForm.invalid" type="submit">{{isedit?"Update":"Add"}} Product</button>
+
+
+                    </div>
+
+
+
+                </div>
+
+            </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

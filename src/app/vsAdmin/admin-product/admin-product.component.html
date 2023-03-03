@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-end my-3">
+                <!-- <span></span> -->
+                <button class="btn btn-sm btn-success" (click)="addProduct(true)">Add New</button>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+    <ng-container *ngIf="displayDataObject?.data.length > 0">
+      <app-featured-product (newItemEvent)="addItem($event)" [productValue]="displayDataObject"></app-featured-product>
+
+    </ng-container>
+</div>
+

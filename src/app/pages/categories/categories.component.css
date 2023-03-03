@@ -1,0 +1,25 @@
+
+ /* CATEGORIES */
+
+
+
+ .cat-item {
+    background: #FFFFFF;
+    transition: .5s;
+  }
+  
+  .cat-item:hover {
+    background: #ffa333;
+  }
+  
+  .cat-item img {
+    transition: .5s;
+  }
+
+  /* .cat-item:hover h6 { 
+    color: white !important;
+  }
+   */
+  .cat-item:hover img {
+    transform: scale(1.2) rotate(5deg);
+  }

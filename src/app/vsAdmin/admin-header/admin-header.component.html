@@ -1,0 +1,54 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar routerLink="/index/home"  class="bg-danger text-light">Ideal Cart</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/adminPanal" class="categoryLink">
+        <mat-icon class="mx-2">dashboard</mat-icon> Dashboard
+      </a>
+      <a mat-list-item routerLink="category" routerLinkActive="sideNavLinkHove" class="categoryLink">
+        <mat-icon class="mx-2">list</mat-icon> Category
+      </a>
+      <a mat-list-item routerLink="product" routerLinkActive="sideNavLinkHove" class="categoryLink">
+        <mat-icon class="mx-2">shopping_basket</mat-icon>  Product
+      </a>
+      <a mat-list-item routerLink="usersDetails" routerLinkActive="sideNavLinkHove" class="categoryLink">
+        <mat-icon class="mx-2">supervised_user_circle</mat-icon>  All Users
+      </a>
+      <a mat-list-item routerLink="feedback" routerLinkActive="sideNavLinkHove" class="categoryLink">
+        <mat-icon class="mx-2">mail_outline</mat-icon>  Feedback
+      </a>
+
+      <a mat-list-item routerLink="feedback" routerLinkActive="sideNavLinkHove" class="categoryLink">
+        <mat-icon class="mx-2">logout</mat-icon>  Logout
+      </a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Admin Panel</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+
+
+    <div class="main-dashboard p-2">
+      <div class="bg-lightSecondary p-2 text-light">
+        {{adminMainService.boardHeading}}
+      </div>
+
+
+
+
+      <router-outlet></router-outlet>
+
+    </div>
+  </mat-sidenav-content>
+
+
+</mat-sidenav-container>

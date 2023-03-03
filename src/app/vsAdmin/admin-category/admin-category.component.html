@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-end my-3">
+                <!-- <span></span> -->
+                <button class="btn btn-sm btn-success" (click)="addCategory(true)">Add New</button>
+            </div>
+
+            <table class="table table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Category Name</th>
+                    <th scope="col">Create Date</th>
+                    <th scope="col">Modify Date</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Statuse</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of categoryData;let i=index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{item.category_name}}</td>
+                    <td>{{item.created_date}}</td>
+                    <td>{{item.updated_date}}</td>
+                    <td>
+                        <ng-container *ngIf="item.image != '';else noImg">
+                            <img [src]="item.image" alt="" class="img-fluid" style="height: 150px;width: 150px;">
+
+                        </ng-container>
+                        <ng-template #noImg>
+                            No image
+                        </ng-template>
+                    </td>
+                    <td>
+                        <ng-container *ngIf="item.status;else notActiveSpan">
+                            <span class="badge badge-success">Active</span>
+
+                        </ng-container>
+                        <ng-template #notActiveSpan>
+                            <span class="badge badge-danger">Not-Active</span>
+                        </ng-template>
+                        
+                    </td>
+
+                    <td>
+                        <div class="d-flex flex-row justify-content-around">
+                            <mat-icon class="cursor-pointer" (click)="addCategory(false,item)">edit</mat-icon>
+                            <mat-icon class="cursor-pointer" (click)="changeCategoryStatus(item)"> portable_wifi_off</mat-icon>
+                            <mat-icon class="cursor-pointer"  (click)="forConfirm(item)">delete</mat-icon>
+                        </div>
+                    </td>
+
+                  </tr>
+                 
+                </tbody>
+              </table>
+
+        </div>
+    </div>
+</div>
+

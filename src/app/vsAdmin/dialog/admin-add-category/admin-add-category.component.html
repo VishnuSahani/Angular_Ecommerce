@@ -1,0 +1,47 @@
+<div class="alert bg-primary2 d-flex justify-content-between">
+    <div class="h4 text-light">Add Category</div>
+    <button type="button" class="close" [mat-dialog-close]="false" cdkFocusInitial>
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+
+            <form>
+                <div class="form-group">
+                    <mat-form-field class="w-100">
+                        <input matInput type="text" name="categoryName" placeholder="Category Name *"
+                            [(ngModel)]="categoryName">
+                        <button mat-button *ngIf="categoryName" matSuffix mat-icon-button aria-label="Clear"
+                            (click)="categoryName=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-6 d-flex flex-column">
+
+                        <label for="categoryImg">Select Category Image <span class="text-danger">*</span></label>
+
+                        <input type="file" id="categoryImg" (change)="handleFileSelect($event)">
+
+
+                    </div>
+                    <div class="col-6 form-group text-center border" *ngIf="imageShow">
+                        <img [src]="imageShow" alt="" class="img-fluid" style="height: 100px;">
+                    </div>
+                </div>
+
+                
+
+                <div class="form-group text-center">
+                    <button class="btn btn-success" (click)="addCategory()">Add Category</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
