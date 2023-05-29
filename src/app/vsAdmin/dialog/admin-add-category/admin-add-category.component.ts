@@ -45,7 +45,10 @@ export class AdminAddCategoryComponent implements OnInit {
     let reqBody ={};
     reqBody['categoryName'] = this.categoryName.toUpperCase();
     reqBody['categoryImage'] = this.base64textString;
-    reqBody['imageName'] = this.data['mainData'][0]['image_name'];
+
+    if(this.data['mainData'] != undefined){
+      reqBody['imageName'] = this.data['mainData'][0]['image_name'];
+    }
 
     console.log(reqBody);
     let url = this.adminEnv.mainUrl+"/add_category";

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCheckboxModule, MatDialogModule, MatIconModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatCheckboxModule, MatDialogModule, MatIconModule, MatInputModule, MatSelectModule, MatTooltipModule } from '@angular/material';
 import { IndexComponent } from './pages/index/index.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { FeaturedProductComponent } from './vsAdmin/featured-product/featured-product.component';
@@ -32,6 +32,9 @@ import { ConfirmDialogComponent } from './vsAdmin/confirm-dialog/confirm-dialog.
 import { AdminProductComponent } from './vsAdmin/admin-product/admin-product.component';
 import { AdminAddProductComponent } from './vsAdmin/dialog/admin-add-product/admin-add-product.component';
 import { CommonProductComponent } from './common/common-product/common-product.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { UserDetailsComponent } from './vsAdmin/user-details/user-details.component';
+import { UserConfirmDialogComponent } from './pages/user-confirm-dialog/user-confirm-dialog.component';
 // import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
@@ -55,6 +58,9 @@ import { CommonProductComponent } from './common/common-product/common-product.c
     AdminProductComponent,
     AdminAddProductComponent,
     CommonProductComponent,
+    SignUpComponent,
+    UserDetailsComponent,
+    UserConfirmDialogComponent,
 
 
   ],
@@ -79,10 +85,11 @@ import { CommonProductComponent } from './common/common-product/common-product.c
     }),
     MatSelectModule,
     ReactiveFormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTooltipModule
   ],
   providers: [],
-  entryComponents:[AdminAddCategoryComponent,ConfirmDialogComponent],
+  entryComponents:[AdminAddCategoryComponent,ConfirmDialogComponent,UserConfirmDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

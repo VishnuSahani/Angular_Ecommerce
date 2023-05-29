@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card rounded-3 text-black">
+                <div class="row g-0">
+                  <div class="col-xl-10 col-lg-10 col-md-10 col-12">
+                    <div class="card-body p-md-5 mx-md-4">
+    
+                      <!-- <div class="text-center">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" style="width: 185px;" alt="logo">
+                        <h4 class="mt-1 mb-5 pb-1">Admin Login</h4>
+                      </div> -->
+    
+                      <form [formGroup]="registerForm" (ngSubmit)="registerFormSubmit()">
+                        <p>Please Create Your New Account</p>
+    
+                        <div class="form-row">
+
+                            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-12">
+                                <label for="userName">Full Name<span class="text-danger">*</span></label>
+                                <input type="text" name="userName" id="userName" formControlName="fullName" class="form-control" placeholder="Enter Full Name">
+                                <span class="font12-error ml-2" *ngIf="registerForm.controls.fullName.touched && registerForm.controls.fullName.invalid">Full Name is required</span>
+                            </div>
+
+                            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-12">
+                                <label for="userEmail">Email ID<span class="text-danger">*</span></label>
+                                <input type="text" name="userEmail" id="userEmail" formControlName="email_id" class="form-control" placeholder="Enter Your Email Id">
+                                <span class="font12-error ml-2" *ngIf="registerForm.controls.email_id.touched && registerForm.controls.email_id.invalid">Email Id is required</span>
+
+                            </div>
+
+                            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-12">
+                                <label for="userMobile">Mobile<span class="text-danger">*</span></label>
+                                <input type="text" name="userMobile" id="userMobile" class="form-control" formControlName="mobile" placeholder="Enter Your Mobile">
+                                <span class="font12-error ml-2" *ngIf="registerForm.controls.mobile.touched && registerForm.controls.mobile.invalid">Mobile Number is required</span>
+
+                            </div>
+
+                            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-12">
+                                <label for="password">Password <span class="text-danger">*</span></label>
+                                <input type="text" name="password" id="password" class="form-control" formControlName="password" placeholder="Enter Your Password">
+                                <span class="font12-error ml-2" *ngIf="registerForm.controls.password.touched && registerForm.controls.password.invalid">Password is required</span>
+
+                            </div>
+
+                            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-12">
+                                <label for="dob">DOB <span class="text-danger">*</span></label>
+                                <input type="date" name="dob" id="dob" formControlName="dob" class="form-control">
+                                <span class="font12-error ml-2" *ngIf="registerForm.controls.dob.touched && registerForm.controls.dob.invalid">Date of birth is required</span>
+
+                            </div>
+
+                            <div class="form-group col-xl-6 col-lg-6 col-md-6 col-12">
+                                <label for="gemderId">Gender <span class="text-danger">*</span></label>
+
+                                <div  id="gemderId" class="ml-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" formControlName="gender" id="gender1" value="Male">
+                                        <label class="form-check-label" for="gender1">Male</label>
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="gender2" formControlName="gender" value="Female">
+                                        <label class="form-check-label" for="gender2">Female</label>
+                                      </div>
+                                </div>
+                                <span class="font12-error ml-2" *ngIf="registerForm.controls.gender.touched && registerForm.controls.gender.invalid">Gender required</span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                          <div class="text-danger">{{showErrorMsg}}</div>
+                          <div class="text-success">{{showSuccessMsg}}</div>
+                        </div>
+
+                        <!-- col-xl-6 col-lg-6 col-md-6 col-12 mb-5-->
+                        <div class="text-center py-1">
+                          <button class="btn btn-light border login_btn btn-block fa-lg mb-3" type="submit" [disabled]="registerForm.invalid">
+                            Sign Up
+                          </button>
+                        </div>
+                        
+    
+                        <div class="d-flex align-items-center justify-content-center pb-4">
+                          <p class="mb-0 mx-2">Have an account?</p>
+                          <a type="button" class="btn btn-outline-success btn-sm" [routerLink]="['../login']">Login Now </a>
+                        </div>
+    
+                      </form>
+    
+                    </div>
+                  </div>
+                  <!-- <div class="col-lg-6 d-flex align-items-center ">
+                    <div class="text-dark px-3 py-4 p-md-5 mx-md-4">
+                      <h4 class="mb-4">We are more than just a company</h4>
+                      <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+
+        </div>
+    </div>
+</div>

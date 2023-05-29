@@ -11,6 +11,10 @@ export class MainServiceService {
   ) { }
 
   userTopHeader :boolean = true;
+  userLoginStatus:boolean = false;
+  userName :any = "";
+  userId :any = "";
+
 
   getUserTopHeader(){
     return this.userTopHeader;

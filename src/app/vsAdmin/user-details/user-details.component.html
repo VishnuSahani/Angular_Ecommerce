@@ -1,0 +1,58 @@
+ <!-- Products Start -->
+ <div class="container-fluid pb-3">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 my-4"><span class=" pr-3">Customer Details</span></h2>
+    <div class="row px-xl-5">
+
+      <!-- {{productValue.data.length }} -->
+
+      <ng-container *ngIf="userDetailsList.length ==0">
+
+        Currently no customer registered..
+
+      </ng-container>
+
+        <ng-container *ngFor="let item of userDetailsList">
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 pb-1">
+                <div class="product-item bg-light mb-4">
+                    <div class="product-img position-relative overflow-hidden">
+                        <!-- <img class="img-fluid w-100" src="assets/img/user.jpg" alt=""> -->
+                        <img class="img-fluid" [src]="item.userdetailsPhoto" alt="{{item.userdetailsPhoto}}">
+                        <div class="product-action">
+                          <!-- <ng-container *ngIf="item.userdetailsStatus=='true';else eyeSlash">
+                            <a role="button" (click)="changeProductStatus(false,item)" class="btn btn-outline-dark btn-square" >
+                              <i class="fa fa-eye"></i>
+                            </a>
+                          </ng-container>
+                          <ng-template #eyeSlash>
+                            <a role="button" class="btn btn-outline-dark btn-square" (click)="changeProductStatus(true,item)" >
+                              <i class="far fa-eye-slash"></i>
+                            </a>
+                          </ng-template> -->
+
+
+                          <!-- <a class="btn btn-outline-dark btn-square" role="button" (click)="editProductDetails(item)"><i class="fa fa-image"></i></a> -->
+
+                            <a class="btn btn-outline-dark btn-square" role="button" (click)="editProductDetails(item)"><i class="fa fa-edit"></i></a>
+                            <a role="button" class="btn btn-outline-dark btn-square" (click)="forDeleteConfirm(item)"><i class="fa fa-trash"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <a class="h6 text-decoration-none text-truncate" >
+                          {{item.userDetailsFullName}}
+                        </a>
+                        <div class="d-flex align-items-center justify-content-center mt-2">
+                            <h5>{{item.userDetailsEmail}}</h5>
+                        </div>
+                        <div class=" mb-1">
+                            Mobile: -<span class="text-muted ml-2 h6">{{item.userDetailsMobile}}</span>
+                            <h6>({{item.userDetailsGender}})</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+</div>
+<!-- Products End -->

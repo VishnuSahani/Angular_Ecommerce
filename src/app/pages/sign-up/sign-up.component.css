@@ -1,0 +1,22 @@
+.gradient-custom-2 {
+    /* background: #fccb90;
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593); */
+
+    background: #fccb90;
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #c7dd36, #b4b445);
+    background: linear-gradient(to right, #ee7724, #d8363a, #ddca36, #b4ae45);
+}
+
+.login_btn{
+    background: #fccb90;
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #c7dd36, #b4b445);
+    background: linear-gradient(to right, #ee7724, #d8363a, #ddca36, #b4ae45);
+    
+    transition: background-color 0.5 ease ;
+}
+
+.login_btn:hover{
+    
+background-color: #ee7724;
+}

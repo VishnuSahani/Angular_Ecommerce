@@ -62,3 +62,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-size: 12px;
   color: red;
 }
+
+.font12{
+  font-size: 12px;
+}

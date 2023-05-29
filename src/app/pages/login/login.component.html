@@ -4,39 +4,90 @@
             <div class="card rounded-3 text-black">
                 <div class="row g-0">
                   <div class="col-lg-6">
-                    <div class="card-body p-md-5 mx-md-4">
-    
-                      <!-- <div class="text-center">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp" style="width: 185px;" alt="logo">
-                        <h4 class="mt-1 mb-5 pb-1">Admin Login</h4>
-                      </div> -->
-    
-                      <form>
-                        <p>Please login to your account</p>
-    
-                        <div class="form-group">
-                            <label for="userName">Email ID / Mobile No <span class="text-danger">*</span></label>
-                            <input type="text" name="userName" id="userName" class="form-control">
-                        </div>
+                    <ng-container *ngIf="pageName=='login'">
+                      <div class="card-body p-md-5 mx-md-4">
+      
+                        <form (ngSubmit)="loginSubmit()">
+                          <p>Login</p>
+      
+                          <div class="form-group">
+                              <label for="userName">Email ID / Mobile No <span class="text-danger">*</span></label>
+                              <input type="text" name="userName" id="userName" [(ngModel)]="username" class="form-control" placeholder="Enter Mobile / Email">
+                          </div>
+  
+                          <div class="form-group">
+                              <label for="password">Password <span class="text-danger">*</span></label>
+                              <input type="text" name="password" id="password" [(ngModel)]="password" class="form-control" placeholder="Enter Password">
+                          </div>
+                          <div class="form-group">
+                            <span class="font12" [ngClass]="{'text-success':showMsg['status'],'text-danger':!showMsg['status']}">
+                              {{showMsg['msg']}}
+                              <!-- {{showMsg | json}} -->
+                            </span>
+                            
+                          </div>
+                          <div class="text-center pt-1 pb-1">
+                            <button class="btn btn-light border login_btn btn-block fa-lg mb-3" type="submit">
+                              Login
+                            </button>
+                            <a class="text-muted" role="button" (click)="pageName='forgetPassword'">Forgot password?</a>
+                          </div>
+      
+                          <!-- <div class="d-flex align-items-center justify-content-center pb-4">
+                            <p class="mb-0 mx-2">Don't have an account?</p>
+                            <a class="btn btn-outline-danger btn-sm" routerLink="../signUp">Create new</a>
+  
+                          </div> -->
+      
+                        </form>
+      
+                      </div>
+                    </ng-container>
+                    
+                    <ng-container *ngIf="pageName=='forgetPassword'">
 
-                        <div class="form-group">
-                            <label for="password">Password <span class="text-danger">*</span></label>
-                            <input type="text" name="password" id="password" class="form-control">
-                        </div>
-                        <div class="text-center pt-1 mb-5 pb-1">
-                          <button class="btn btn-light border login_btn btn-block fa-lg mb-3" type="button">Log
-                            in</button>
-                          <a class="text-muted" href="#!">Forgot password?</a>
-                        </div>
-    
-                        <!-- <div class="d-flex align-items-center justify-content-center pb-4">
-                          <p class="mb-0 me-2">Don't have an account?</p>
-                          <button type="button" class="btn btn-outline-danger">Create new</button>
-                        </div> -->
-    
-                      </form>
-    
+                      <div class="card-body p-md-5 mx-md-4">
+      
+                        <form >
+                          <p>Forget Password</p>
+      
+                          <div class="form-group">
+                              <label for="email_id">Email ID<span class="text-danger">*</span></label>
+                              <input type="text" name="email_id" id="email_id" [(ngModel)]="email_id" class="form-control" placeholder="Enter Email ID">
+                          </div>
+  
+                          <div class="form-group">
+                            <span class="" [ngClass]="{'text-success':showMsg['status'],'text-danger':!showMsg['status']}">
+                              {{showMsg['msg']}}
+                              <!-- {{showMsg | json}} -->
+                            </span>
+                            
+                          </div>
+
+                          <div class="text-center pt-1 pb-1">
+                            <button class="btn btn-light border login_btn btn-block fa-lg mb-3" type="submit">
+                              Forget Password
+                            </button>
+                            <a class="text-muted" role="button" (click)="pageName='login'">Goto Login?</a>
+                          </div>
+                   
+      
+                        </form>
+      
+                      </div>
+
+
+                    </ng-container>
+
+                    
+
+                    <div class="d-flex align-items-center justify-content-center pb-4">
+                      <p class="mb-0 mx-2">Don't have an account?</p>
+                      <a class="btn btn-outline-danger btn-sm" routerLink="../signUp">Create new</a>
+                      <!-- <a (click)="singnUpClick()" class="nav-item nav-link">Sign Up click</a> -->
+
                     </div>
+                 
                   </div>
                   <div class="col-lg-6 d-flex align-items-center ">
                     <div class="text-dark px-3 py-4 p-md-5 mx-md-4">
