@@ -33,6 +33,7 @@ export class AppComponent implements OnInit{
       if(loginData['loginTrue']){
         this.mainService.userLoginStatus = true;
         this.mainService.userName = loginData['userName'];
+        this.mainService.userId = loginData['userId']
 
       }
 

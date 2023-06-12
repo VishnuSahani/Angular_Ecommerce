@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MainServiceService } from 'src/app/services/main-service.service';
 import { UserConfirmDialogComponent } from '../user-confirm-dialog/user-confirm-dialog.component';
@@ -13,6 +14,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(public mainService:MainServiceService,
     private toastr:ToastrService,
+    private routr: Router,
     private dialog:MatDialog) { }
 
   ngOnInit() {
@@ -29,6 +31,7 @@ export class HeaderComponent implements OnInit {
         this.mainService.userLoginStatus = false;
         // localStorage.setItem("ideal_user_data");
          localStorage.removeItem("ideal_user_data");
+         this.routr.navigate(['/index/home']);
          this.toastr.success("You are successfully logout.")
       }
     });

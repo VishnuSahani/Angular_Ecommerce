@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,9 @@ export class MainServiceService {
   userLoginStatus:boolean = false;
   userName :any = "";
   userId :any = "";
+  cartNo = 0;
+  cartList = [];
+ 
 
 
   getUserTopHeader(){
@@ -44,4 +48,6 @@ export class MainServiceService {
   
     
   }
+
+  
 }

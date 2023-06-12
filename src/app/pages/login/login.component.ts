@@ -76,6 +76,7 @@ export class LoginComponent implements OnInit {
         // let decoded = window.atob(encoded);
         data['loginTrue'] = true;
         data['userName'] = respo['userName'].toUpperCase();
+        data['userId'] = respo['userId'].toUpperCase();
 
         let lData = window.btoa(JSON.stringify(data));
         localStorage.setItem("ideal_user_data", lData);
