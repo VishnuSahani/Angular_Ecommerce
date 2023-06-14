@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MainServiceService } from 'src/app/services/main-service.service';
 
 @Component({
@@ -9,12 +10,13 @@ import { MainServiceService } from 'src/app/services/main-service.service';
 export class CartPageComponent implements OnInit {
 
   constructor(
-    private mainService : MainServiceService
+    private mainService : MainServiceService,
+    private router: Router
   ) { }
 
 
   cartItemList = [];
-  shippingAmount = 40;
+  shippingAmount = this.mainService.shippingAmount;
   subTotalAmount = 0;
   totalAmount = 0;
 
@@ -49,6 +51,12 @@ export class CartPageComponent implements OnInit {
     })
     this.subTotalAmount = tot.reduce((acc, cur) => acc + Number(cur), 0);
     this.totalAmount = this.shippingAmount + this.subTotalAmount;
+  }
+
+
+  checkOut(){
+    this.mainService.checkoutList = [...this.cartItemList];
+    this.router.navigate(['/index/checkout']);
   }
 
 }

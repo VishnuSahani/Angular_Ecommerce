@@ -13,6 +13,7 @@ import { AdminLoginComponent } from './vsAdmin/admin-login/admin-login.component
 import { AdminProductComponent } from './vsAdmin/admin-product/admin-product.component';
 import { AdminAddProductComponent } from './vsAdmin/dialog/admin-add-product/admin-add-product.component';
 import { UserDetailsComponent } from './vsAdmin/user-details/user-details.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
       {path:"home",component:HomeComponent},
       {path:"signUp",component:SignUpComponent},
       {path:"cart",component:CartPageComponent},
+      {path:"checkout", component:CheckoutPageComponent},
 
     ]
   },

@@ -17,7 +17,8 @@ export class MainServiceService {
   userId :any = "";
   cartNo = 0;
   cartList = [];
- 
+  checkoutList = [];
+  shippingAmount = 40;
 
 
   getUserTopHeader(){
