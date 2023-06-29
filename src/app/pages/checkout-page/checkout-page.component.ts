@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { EnvServiceService } from 'src/app/services/env-service.service';
 import { MainServiceService } from 'src/app/services/main-service.service';
 
@@ -12,6 +14,8 @@ export class CheckoutPageComponent implements OnInit {
   constructor(
     private mainService : MainServiceService,
     private env:EnvServiceService,
+    private toaster: ToastrService,
+    private router:Router
 
   ) { }
 
@@ -60,6 +64,84 @@ export class CheckoutPageComponent implements OnInit {
       this.pinCode = mainData.userDetailsPincode;
       this.state = mainData.userDetailsState;
     })
+  }
+
+
+  orderPlaced(){
+    
+    if(this.fullName.length == 0){
+      this.toaster.error("Please enter a full name","Name is required");
+      return;
+    }
+
+    if(this.emailId.length == 0){
+      this.toaster.error("Please enter a Email Id","Email is required");
+      return;
+    }
+
+    if(this.mobile.length == 0){
+      this.toaster.error("Please enter a Contact Number","Mobile number is required");
+      return;
+    }
+
+    if(this.areaStreet.length == 0){
+      this.toaster.error("Please enter a Address 1","Address 1 is required");
+      return;
+    }
+
+    if(this.landmark.length == 0){
+      this.toaster.error("Please enter a Address 2 / Landmark","Address 2 is required");
+      return;
+    }
+
+    if(this.city.length == 0){
+      this.toaster.error("Please enter a City","City is required");
+      return;
+    }
+
+    if(this.state.length == 0){
+      this.toaster.error("Please enter a State is","State is required");
+      return;
+    }
+
+    if(this.pinCode.length == 0){
+      this.toaster.error("Please enter a Pincode / ZIP code","ZIP Code is required");
+      return;
+    }
+
+
+    let requestBody = {};
+
+    requestBody['fullName'] = this.fullName;
+    requestBody['emailId'] = this.emailId;
+    requestBody['mobile'] = this.mobile;
+    requestBody['areaStreet'] = this.areaStreet;
+    requestBody['landmark'] = this.landmark;
+    requestBody['city'] = this.city;
+    requestBody['pinCode'] = this.pinCode;
+    requestBody['state'] = this.state;
+    requestBody['shippingAmount'] = this.shippingAmount;
+    requestBody['subTotalAmount'] = this.subTotalAmount;
+    requestBody['totalAmount'] = this.totalAmount;
+    requestBody['userId'] = this.mainService.userId;
+    requestBody['paymentMode'] = "cash";
+    requestBody['productList'] = this.mainService.checkoutList.map((x)=>{
+      // let val = 0;
+      return x['id']
+    }).join(",");
+
+
+    this.mainService.userApiService(this.env.mainUrl+"/userOrderPlaced",requestBody).then((res) => {
+      console.log("ORder palced",res);
+      if(res['success']){
+        this.toaster.success("Order Placed Successfully","Order Placed Successfully");
+        this.router.navigate(['/index/myOrder'])
+        // this.router.navigate(['/index/myOrder']);
+
+      }else{
+        this.toaster.error("Order Placed Failed! Try again","Order Placed Failed");
+      }
+    });
   }
 
 }

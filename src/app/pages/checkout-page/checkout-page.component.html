@@ -3,8 +3,8 @@
     <div class="row px-xl-5">
         <div class="col-12">
             <nav class="breadcrumb bg-light mb-30">
-                <a class="breadcrumb-item text-dark" href="#">Home</a>
-                <a class="breadcrumb-item text-dark" href="#">Shop</a>
+                <a class="breadcrumb-item text-dark" routerLink="../home">Home</a>
+                <a class="breadcrumb-item text-dark" routerLink="../cart">Shop</a>
                 <span class="breadcrumb-item active">Checkout</span>
             </nav>
         </div>
@@ -192,7 +192,7 @@
                             <label class="custom-control-label" for="cash">Cash on delevery</label>
                         </div>
                     </div>
-                    <button class="btn btn-block btn-primary font-weight-bold py-3">Place Order</button>
+                    <button class="btn btn-block btn-primary font-weight-bold py-2" (click)="orderPlaced()">Place Order</button>
                 </div>
             </div>
         </div>
