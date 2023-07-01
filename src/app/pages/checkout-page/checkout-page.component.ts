@@ -124,12 +124,21 @@ export class CheckoutPageComponent implements OnInit {
     requestBody['subTotalAmount'] = this.subTotalAmount;
     requestBody['totalAmount'] = this.totalAmount;
     requestBody['userId'] = this.mainService.userId;
-    requestBody['paymentMode'] = "cash";
+    requestBody['paymentMode'] = "Cash";
     requestBody['productList'] = this.mainService.checkoutList.map((x)=>{
       // let val = 0;
       return x['id']
     }).join(",");
+    //buyQty
+    requestBody['productQtyList'] = this.mainService.checkoutList.map((x)=>{
+      // let val = 0;
+      return x['buyQty']
+    }).join(",");
 
+    requestBody['productPriceList'] = this.mainService.checkoutList.map((x)=>{
+      // let val = 0;
+      return x['productPrice']
+    }).join(",");
 
     this.mainService.userApiService(this.env.mainUrl+"/userOrderPlaced",requestBody).then((res) => {
       console.log("ORder palced",res);

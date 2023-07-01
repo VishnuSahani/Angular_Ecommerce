@@ -8,7 +8,7 @@
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
                         <!-- <img class="img-fluid w-100" src="assets/img/product-{{item}}.jpg" alt=""> -->
-                        <img class="img-fluid w-100" [src]="item.productImage" alt="">
+                        <img class="img-fluid w-100" style="height: 15rem;" [src]="item.productImage" alt="">
                         <div class="product-action">
                             <a class="btn btn-square" [matTooltip]="item.isCart?'Already added in cart':'Add to cart'" matTooltipPosition="above" [ngClass]="{'btn-outline-dark':!item.isCart,'btn-success':item.isCart}" role="button" (click)="addToCart(item)"><i class="fa fa-shopping-cart"></i></a>
                             <!-- <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a> -->

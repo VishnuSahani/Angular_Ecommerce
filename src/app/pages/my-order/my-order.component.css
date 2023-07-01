@@ -1,0 +1,6 @@
+.deletBtn:hover{
+    color: red;
+}
+.deletBtn{
+    cursor: pointer;
+}

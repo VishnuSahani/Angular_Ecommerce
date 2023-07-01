@@ -3,10 +3,10 @@
     <div class="row bg-light-grey py-1 px-xl-5">
         <div class="col-lg-6 d-none d-lg-block">
             <div class="d-inline-flex align-items-center h-100">
-                <a class="text-body mr-3" routerLink="">About</a>
+                <!-- <a class="text-body mr-3" routerLink="">About</a> -->
                 <a class="text-body mr-3" routerLink="">Contact</a>
-                <a class="text-body mr-3" routerLink="">Help</a>
-                <a class="text-body mr-3" routerLink="">FAQs</a>
+                <!-- <a class="text-body mr-3" routerLink="">Help</a> -->
+                <!-- <a class="text-body mr-3" routerLink="">FAQs</a> -->
                 <a class="text-body mr-3" routerLink="/admin">Admin</a>
             </div>
         </div>
@@ -42,7 +42,7 @@
                     <i class="fas fa-heart text-dark"></i>
                     <span class="badge text-dark border border-dark rounded-circle mx-2" style="padding-bottom: 2px;">0</span>
                 </a> -->
-                <a routerLink="" class="btn px-0 ml-2">
+                <a routerLink="cart" class="btn px-0 ml-2">
                     <i class="fas fa-shopping-cart text-dark"></i>
                     <span class="badge text-dark border border-dark rounded-circle mx-2" style="padding-bottom: 2px;">{{this.mainService.cartNo}}</span>
                 </a>
@@ -56,7 +56,7 @@
     </div>
     <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
         <div class="col-lg-4">
-            <a routerLink="" class="text-decoration-none">
+            <a routerLink="home" class="text-decoration-none">
                 <span class="h2 text-uppercase text-warning bg-dark font-weight-bold px-2 py-1">Ideal</span>
                 <span class="h2 text-uppercase text-dark bg-gradient1 font-weight-bold px-2 ml-n1 py-1">Cart</span>
             </a>
@@ -141,8 +141,8 @@
             </nav>
         </div>
         <div class="col-lg-9">
-            <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 mt-2 py-lg-0 px-0">
-                <a class="text-decoration-none d-block d-lg-none">
+            <nav class="navbar navbar-expand-md bg-dark navbar-dark py-3 mt-2 py-lg-0 px-0">
+                <a routerLink="home" class="text-decoration-none d-block d-lg-none">
                     <span class="h3 text-uppercase text-light bg-dark px-2">Ideal</span>
                     <span class="h3 text-uppercase text-dark bg-gradient1 px-2 ml-n1">Cart</span>
                 </a>
@@ -153,15 +153,16 @@
                     <div class="navbar-nav mr-auto py-0">
                         <a routerLink="home" routerLinkActive="active" class="nav-item nav-link">Home</a>
                         <a routerLink="shop" routerLinkActive="active" class="nav-item nav-link">Shop</a>
-                        <a routerLink="detail.html" class="nav-item nav-link">Shop Detail</a>
-                        <div class="nav-item dropdown">
+                        <a routerLink="myOrder" class="nav-item nav-link">Order Detail</a>
+                        <!-- <div class="nav-item dropdown">
                             <a routerLink="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages </a>
                             <div class="dropdown-menu bg-gradient1 rounded-0 border-0 m-0">
                                 <a routerLink="cart.html" class="dropdown-item">Shopping Cart</a>
                                 <a routerLink="checkout.html" class="dropdown-item">Checkout</a>
                             </div>
-                        </div>
-                        <a routerLink="contact.html" class="nav-item nav-link">Contact</a>
+                        </div> -->
+                        <a routerLink="/" class="nav-item nav-link">Profile</a>
+                        <a routerLink="/" class="nav-item nav-link">Contact</a>
                         <a routerLink="login" *ngIf="!mainService.userLoginStatus" class="nav-item nav-link">Login</a>
                         <a routerLink="signUp" *ngIf="!mainService.userLoginStatus" class="nav-item nav-link">Sign Up</a>
                     </div>
@@ -171,7 +172,7 @@
                             <i class="fas fa-heart text-warning mx-2"></i>
                             <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
                         </a> -->
-                        <a class="btn px-0 ml-3">
+                        <a class="btn px-0 ml-3" routerLink="cart">
                             <i class="fas fa-shopping-cart text-warning mx-2"></i>
                             <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">{{this.mainService.cartNo}}</span>
                         </a>

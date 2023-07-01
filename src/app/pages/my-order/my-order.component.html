@@ -1,1 +1,71 @@
-<p>my-order works!</p>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-end my-3">
+                <!-- <span></span> -->
+                <!-- <button class="btn btn-sm btn-success" >Cart</button> -->
+            </div>
+
+            <table class="table table-ligth">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price </th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Delivery Date</th>
+                    
+                    <th scope="col">Image</th>
+
+                    <th scope="col">Payment</th>
+                    <th scope="col">Statue</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr *ngFor="let item of orderDetailsList;let i=index">
+                    <td>{{item.orderId}}</td>
+                    <td>{{item.productName}}</td>
+                    <td>{{item.productPrice}}</td>
+                    <td>{{item.productQuantity}}</td>
+                    <td>{{item.createdDate}}</td>
+                    
+                    <td>
+                        <ng-container *ngIf="item.image != '';else noImg">
+                            <img [src]="item.image" alt="" class="img-fluid" style="height: 50px;width: 50px;">
+
+                        </ng-container>
+                        <ng-template #noImg>
+                            No image
+                        </ng-template>
+                    </td>
+
+                    <td class="text-center1"> 
+                        <span class="badge badge-success">{{item.paymentMode}}</span>
+
+                    </td>
+                    <td>
+                        <span class="badge badge-warning">{{item.shippingStatus}}</span>
+
+                    </td>
+
+                    <td class="text-center">
+                        <ng-container *ngIf="item.shippingStatus !='Received'">
+                            <mat-icon class="deletBtn"  matTooltip="Cancel Order" matTooltipPosition="above" (click)="cancelOrder(item)">delete</mat-icon>
+                        </ng-container>
+
+                    </td>
+                 
+
+                  
+
+                  </tr>
+                 
+                </tbody>
+              </table>
+
+        </div>
+    </div>
+</div>
+

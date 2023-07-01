@@ -15,10 +15,12 @@ import { AdminAddProductComponent } from './vsAdmin/dialog/admin-add-product/adm
 import { UserDetailsComponent } from './vsAdmin/user-details/user-details.component';
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 import { MyOrderComponent } from './pages/my-order/my-order.component';
+import { RecentProductComponent } from './pages/recent-product/recent-product.component';
 
 
 const routes: Routes = [
   {path:"",component:IndexComponent},
+  // {path:"/",component:IndexComponent},
 
   {
     path:"index" , component: IndexComponent,
@@ -31,6 +33,7 @@ const routes: Routes = [
       {path:"cart",component:CartPageComponent},
       {path:"checkout", component:CheckoutPageComponent},
       {path:"myOrder", component:MyOrderComponent},
+      {path:"shop", component:RecentProductComponent},
 
     ]
   },
