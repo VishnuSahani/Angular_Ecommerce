@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between my-3">
+                <div class="">
+                    <input type="text" class="form-control" placeholder="Search Order">
+                </div>
+                <button class="btn btn-success" >Export</button>
+            </div>
+
+            <table class="table table-light">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Delivery Date</th>
+                    <th scope="col">Delivery Status</th>
+                    <th scope="col">Payment</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="">
+                  <tr *ngFor="let order of orderDetailList" class="border-bottom">
+                    <td>{{order.orderId}}</td>
+                    <td>{{order.customerName}}</td>
+                    <td>{{order.orderItem}}</td>
+                    <td>{{order.price}}</td>
+                    <td>{{order.quantity}}</td>
+                    <td>{{order.deliveryDate}}</td>
+                    <td>
+                        <select class="form-control" name="changeStatus" id="changeStatus" value="{{order.status}}">
+                            <option value="Received">Received (1)</option>
+                            <option value="Shipping">Shipping (2)</option>
+                            <option value="Completed">Completed (3)</option>
+                            <option value="Cancel">Cancel (0)</option>
+                        </select>
+                    </td>
+                    <td>{{order.payment}}</td>
+                    <td></td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+
+        </div>
+    </div>
+</div>
+
