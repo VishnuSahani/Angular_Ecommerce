@@ -38,6 +38,7 @@ import { UserConfirmDialogComponent } from './pages/user-confirm-dialog/user-con
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 import { MyOrderComponent } from './pages/my-order/my-order.component';
+import { OrderDetailsComponent } from './vsAdmin/order-details/order-details.component';
 // import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
@@ -67,6 +68,7 @@ import { MyOrderComponent } from './pages/my-order/my-order.component';
     CartPageComponent,
     CheckoutPageComponent,
     MyOrderComponent,
+    OrderDetailsComponent,
 
 
   ],

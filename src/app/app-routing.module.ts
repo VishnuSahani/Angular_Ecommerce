@@ -16,6 +16,7 @@ import { UserDetailsComponent } from './vsAdmin/user-details/user-details.compon
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 import { MyOrderComponent } from './pages/my-order/my-order.component';
 import { RecentProductComponent } from './pages/recent-product/recent-product.component';
+import { OrderDetailsComponent } from './vsAdmin/order-details/order-details.component';
 
 
 const routes: Routes = [
@@ -53,6 +54,7 @@ const routes: Routes = [
       {path : "product", component : AdminProductComponent},
       {path : "addProduct", component : AdminAddProductComponent},
       {path : "userDetails", component : UserDetailsComponent},
+      {path : "orderDetails", component : OrderDetailsComponent},
 
     ]
   }
