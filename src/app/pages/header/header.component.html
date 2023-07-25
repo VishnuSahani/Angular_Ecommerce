@@ -3,8 +3,8 @@
     <div class="row bg-light-grey py-1 px-xl-5">
         <div class="col-lg-6 d-none d-lg-block">
             <div class="d-inline-flex align-items-center h-100">
-                <!-- <a class="text-body mr-3" routerLink="">About</a> -->
-                <a class="text-body mr-3" routerLink="">Contact</a>
+                <a class="text-body mr-3" role="button">info@idealCart.com</a>
+                <!-- <a class="text-body mr-3" routerLink="">Contact</a> -->
                 <!-- <a class="text-body mr-3" routerLink="">Help</a> -->
                 <!-- <a class="text-body mr-3" routerLink="">FAQs</a> -->
                 <a class="text-body mr-3" routerLink="/admin">Admin</a>
@@ -14,7 +14,7 @@
             <div class="d-inline-flex align-items-center" *ngIf="!mainService.userLoginStatus">
                 <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
-                    <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-menu dropdown-menu-right" style="z-index: 1021;">
                         <button class="dropdown-item" type="button" routerLink="login">Sign in</button>
                         <button class="dropdown-item" type="button" routerLink="signUp">Sign up</button>
                     </div>
@@ -153,7 +153,7 @@
                     <div class="navbar-nav mr-auto py-0">
                         <a routerLink="home" routerLinkActive="active" class="nav-item nav-link">Home</a>
                         <a routerLink="shop" routerLinkActive="active" class="nav-item nav-link">Shop</a>
-                        <a routerLink="myOrder" class="nav-item nav-link">Order Detail</a>
+                        <a routerLink="myOrder" class="nav-item nav-link" *ngIf="mainService.userLoginStatus">Order Detail</a>
                         <!-- <div class="nav-item dropdown">
                             <a routerLink="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages </a>
                             <div class="dropdown-menu bg-gradient1 rounded-0 border-0 m-0">
@@ -161,8 +161,8 @@
                                 <a routerLink="checkout.html" class="dropdown-item">Checkout</a>
                             </div>
                         </div> -->
-                        <a routerLink="/" class="nav-item nav-link">Profile</a>
-                        <a routerLink="/" class="nav-item nav-link">Contact</a>
+                        <a routerLink="/" class="nav-item nav-link" *ngIf="mainService.userLoginStatus">Profile</a>
+                        <a routerLink="contact" class="nav-item nav-link">Contact</a>
                         <a routerLink="login" *ngIf="!mainService.userLoginStatus" class="nav-item nav-link">Login</a>
                         <a routerLink="signUp" *ngIf="!mainService.userLoginStatus" class="nav-item nav-link">Sign Up</a>
                     </div>

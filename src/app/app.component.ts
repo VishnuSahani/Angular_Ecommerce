@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MainServiceService } from './services/main-service.service';
 
 @Component({
@@ -13,15 +13,41 @@ export class AppComponent implements OnInit{
 
   constructor(
     private router : Router,
-    private mainService : MainServiceService
+    private mainService : MainServiceService,
+    private route: ActivatedRoute
     ){}
 
   ngOnInit(): void {
     console.log(this.router.url)
 
-    // this.router.navigate(['index/home'])
-    this.router.navigate(['adminPanal']);
-    // this.getLogin();
+    // let param1 = this.route.snapshot.paramMap.get('admin');
+   setTimeout(() => {
+    let param1 = this.route.snapshot.queryParamMap.get("admin");
+
+    console.log("query param test",param1)
+    //alert(param1)
+
+    if(param1 == 'idealCart'){
+
+    // this.router.navigate(['adminPanal']); // without login
+    this.router.navigate(['admin']);
+
+    }else{
+
+      this.router.navigate(['index/home'])
+      // this.router.navigate(['admin']); // open for admin test
+
+    this.getLogin();
+
+    }
+
+
+    
+
+
+   }, 100);
+
+   
   }
 
   getLogin(){

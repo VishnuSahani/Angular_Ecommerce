@@ -17,6 +17,7 @@ import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.compo
 import { MyOrderComponent } from './pages/my-order/my-order.component';
 import { RecentProductComponent } from './pages/recent-product/recent-product.component';
 import { OrderDetailsComponent } from './vsAdmin/order-details/order-details.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,9 @@ const routes: Routes = [
       {path:"checkout", component:CheckoutPageComponent},
       {path:"myOrder", component:MyOrderComponent},
       {path:"shop", component:RecentProductComponent},
+      {
+        path:"contact", component:ContactComponent
+      }
 
     ]
   },
