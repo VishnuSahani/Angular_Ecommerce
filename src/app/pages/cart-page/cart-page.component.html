@@ -66,16 +66,16 @@
             </table>
         </div>
         <div class="col-lg-4">
-            <form class="mb-30" action="">
+            <!-- <form class="mb-30" action="">
                 <div class="input-group">
                     <input type="text" class="form-control border-0 p-4" placeholder="Coupon Code">
                     <div class="input-group-append">
                         <button class="btn btn-primary">Apply Coupon</button>
                     </div>
                 </div>
-            </form>
-            <h5 class="section-title text-uppercase mb-3"><span class="text-secondary pr-3">Cart Summary</span></h5>
-            <div class="bg-light p-5 mb-5">
+            </form> -->
+            <h5 class="section-title text-uppercase bg-dark py-2 mb-3"><span class="text-light px-3">Cart Summary</span></h5>
+            <div *ngIf="cartItemList.length != 0" class="bg-light p-5 mb-5">
                 <div class="border-bottom pb-2">
                     <div class="d-flex justify-content-between mb-3">
                         <h6>Subtotal</h6>

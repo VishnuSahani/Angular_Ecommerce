@@ -4,6 +4,25 @@
 
   <router-outlet></router-outlet>
 
+  <ng-container *ngIf="href == '' || href == '/'">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="card jumbotron">
+            <div class="card-body">
+              <div class="card-title">
+                Welcome to our e-commerce wonderland, where shopping dreams come true! Embark on a journey of unparalleled convenience, variety, and savings by signing in to your personalized account. Our user-centric platform is designed to cater to your every shopping need, delivering an exceptional experience right at your fingertips. Gain access to a vast selection of top-notch products, exclusive deals, and personalized recommendations tailored just for you. Whether you're a tech enthusiast, a fashionista, or a home decor aficionado, our e-commerce paradise has something extraordinary in store for everyone. Embrace the power of seamless navigation, secure transactions, and hassle-free returns, all within a dynamic and intuitive user interface. Join us now and unlock a world of shopping delights that will leave you coming back for more. Happy shopping!
+                <div class="text-right">
+                  <a class="text-danger" routerLink="/index/home">Click here? Shop now</a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 
 
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MainServiceService } from 'src/app/services/main-service.service';
 
 @Component({
@@ -8,12 +9,19 @@ import { MainServiceService } from 'src/app/services/main-service.service';
 })
 export class IndexComponent implements OnInit {
 
-  constructor(public mainService:MainServiceService) { }
+  constructor(
+    public mainService:MainServiceService,
+    private router: Router
+    ) { }
 
+  public href: string = "";
 
   ngOnInit() {
 
     this.mainService.setUserTopHeader(true);
+
+    this.href = this.router.url;
+        
 
   }
 

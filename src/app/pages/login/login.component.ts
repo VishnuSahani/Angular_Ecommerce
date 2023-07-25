@@ -61,6 +61,8 @@ export class LoginComponent implements OnInit {
       "password":this.password
     };
 
+    this.showMsg['msg'] ="";
+
     this.mainService.userApiService(apiUrl,data).then((respo)=>{
       console.log(respo);
 
@@ -90,7 +92,11 @@ export class LoginComponent implements OnInit {
         this.toastr.error(this.showMsg['msg'],"Error")
       }
       
-    });
+    }).catch((error=>{
+      console.log("server login error",error);
+      this.toastr.error("Somthing went wrong with server try again","Server Error")
+      
+    }));
 
 
 
