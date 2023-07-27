@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { MainServiceService } from './services/main-service.service';
 
 @Component({
@@ -13,8 +14,10 @@ export class AppComponent implements OnInit{
 
   constructor(
     private router : Router,
-    private mainService : MainServiceService,
-    private route: ActivatedRoute
+    public mainService : MainServiceService,
+    private route: ActivatedRoute,
+    private toastr : ToastrService
+
     ){}
 
   ngOnInit(): void {
@@ -60,6 +63,8 @@ export class AppComponent implements OnInit{
         this.mainService.userLoginStatus = true;
         this.mainService.userName = loginData['userName'];
         this.mainService.userId = loginData['userId']
+        this.toastr.success("You are successfully login","Success");
+
 
       }
 

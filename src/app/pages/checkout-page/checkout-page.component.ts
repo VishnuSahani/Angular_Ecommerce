@@ -12,7 +12,7 @@ import { MainServiceService } from 'src/app/services/main-service.service';
 export class CheckoutPageComponent implements OnInit {
 
   constructor(
-    private mainService : MainServiceService,
+    public mainService : MainServiceService,
     private env:EnvServiceService,
     private toaster: ToastrService,
     private router:Router

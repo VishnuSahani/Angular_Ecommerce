@@ -96,4 +96,9 @@ export class UserDetailsComponent implements OnInit {
 
   }
 
+
+  editProductDetails(item){
+
+  }
+
 }

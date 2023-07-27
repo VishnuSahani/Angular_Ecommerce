@@ -12,7 +12,7 @@ import { NavigationExtras, Router } from '@angular/router';
 })
 export class FeaturedProductComponent implements OnInit,OnChanges {
 
-  @Input() productValue={};
+  @Input() productValue={"title":""};
   @Output() newItemEvent = new EventEmitter<any>();
 
 

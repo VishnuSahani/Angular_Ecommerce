@@ -22,6 +22,34 @@ export class MyOrderComponent implements OnInit {
   }
 
   orderDetailsList = [];
+  mainOrderList = [];
+  expandId:any;
+
+
+  expandTableRow(item){
+    if(this.expandId == item.orderId){
+      this.mainOrderList.map((x)=>{
+        
+          x['isExpand'] = false;
+          this.expandId = "";
+      
+      });
+
+    }else{
+      this.expandId = item.orderId
+      this.mainOrderList.map((x)=>{
+        if(x.orderId == item.orderId){
+          x['isExpand'] = true;
+  
+        }else{
+          x['isExpand'] = false;
+        }
+      })
+
+    }
+   
+
+  }
 
   getOrderDetails() {
     let reqBody = {};
@@ -31,6 +59,29 @@ export class MyOrderComponent implements OnInit {
       console.log("order details: ", response);
       let mainData = [];
       if (response['success']) {
+        this.mainOrderList = [...response['data']];
+
+        // new 
+
+        this.mainOrderList.map((x)=>{
+          x['isExpand'] = false;
+          let qtyarr = x['productQtyList'].split(',').map((y)=>{return parseInt(y)});
+          x['productQuantityNew'] = qtyarr.reduce((a, b) => a + b, 0);
+
+          x['productListInfo'].map((z)=>{
+            z['productImage'] = z['productImage'];
+
+            z['image'] = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'+ z['productImage'])
+
+          });
+
+          return x;
+        });
+
+        console.log("this.mainOrderList==vishnu",this.mainOrderList);
+        
+        // end new
+
         mainData = response['data'];
         mainData.forEach((item) => {
           
@@ -76,6 +127,25 @@ export class MyOrderComponent implements OnInit {
       }
 
     });
+
+  }
+
+  cancelOrderItem(item,orderIDObj){
+    console.log(item); // item.id is primary key 
+    console.log(orderIDObj); // item.id is primary key 
+    let reqBody = {
+      "email":this.mainService.userId,
+      "orderId":orderIDObj.orderId,
+      "itemId":item.id,
+      "itemQty":item.productQuantity,
+      "itemPrice":item.productPrice
+      };
+
+    this.mainService.userApiService(this.env.mainUrl + "/deleteOrderItem",reqBody).then((respo)=>{
+      console.log("cancelOrder",respo);
+      // / yaha kam baki h
+      
+    })
 
   }
 
