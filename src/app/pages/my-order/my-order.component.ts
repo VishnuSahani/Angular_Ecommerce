@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ToastrService } from 'ngx-toastr';
 import { EnvServiceService } from 'src/app/services/env-service.service';
 import { MainServiceService } from 'src/app/services/main-service.service';
 
@@ -14,6 +15,7 @@ export class MyOrderComponent implements OnInit {
     private mainService: MainServiceService,
     private env: EnvServiceService,
     private _sanitizer : DomSanitizer,
+    private toastr : ToastrService
 
   ) { }
 
@@ -144,6 +146,15 @@ export class MyOrderComponent implements OnInit {
     this.mainService.userApiService(this.env.mainUrl + "/deleteOrderItem",reqBody).then((respo)=>{
       console.log("cancelOrder",respo);
       // / yaha kam baki h
+
+      if(respo['success']){
+        this.getOrderDetails();
+        
+        this.toastr.success(respo['data'],"Success Message")
+      }else{
+        this.toastr.error(respo['data'],"Error Message")
+      }
+
       
     })
 
