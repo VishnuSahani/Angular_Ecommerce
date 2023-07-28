@@ -40,6 +40,7 @@ import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.compo
 import { MyOrderComponent } from './pages/my-order/my-order.component';
 import { OrderDetailsComponent } from './vsAdmin/order-details/order-details.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 // import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
@@ -71,6 +72,7 @@ import { ContactComponent } from './pages/contact/contact.component';
     MyOrderComponent,
     OrderDetailsComponent,
     ContactComponent,
+    UserProfileComponent,
 
 
   ],

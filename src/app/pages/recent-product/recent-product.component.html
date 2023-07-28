@@ -1,6 +1,13 @@
 <!-- Products Start -->
 <div class="container-fluid pt-5 pb-3">
-    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class=" pr-3">Recent Products</span></h2>
+    <div class="d-flex justify-content-between align-items-center">
+        <h4 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class=" pr-3">Recent Products</span></h4>
+    <ng-container *ngIf="categoriesType != '' && categoriesType != undefined && categoriesType != null">
+
+        <button type="button" class="btn btn-sm btn-success" (click)="showAllProduct()">Show all product</button>
+
+    </ng-container>
+    </div>
     <div class="row px-xl-5">
         
         <ng-container *ngFor="let item of productList">
@@ -14,7 +21,7 @@
                             <!-- <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a> -->
                             <!-- <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a> -->
                             <!-- <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a> -->
-                            <a class="btn btn-danger btn-square" role="button">Buy</a>
+                            <a class="btn btn-danger btn-square" (click)="checkOut(item)" role="button">Buy</a>
                         </div>
                     </div>
                     <div class="text-center py-4">

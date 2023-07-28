@@ -1,5 +1,5 @@
- <!-- Topbar Start -->
- <div class="container-fluid" *ngIf="mainService.getUserTopHeader()">
+<!-- Topbar Start -->
+<div class="container-fluid" *ngIf="mainService.getUserTopHeader()">
     <div class="row bg-light-grey py-1 px-xl-5">
         <div class="col-lg-6 d-none d-lg-block">
             <div class="d-inline-flex align-items-center h-100">
@@ -13,10 +13,16 @@
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center" *ngIf="!mainService.userLoginStatus">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
-                    <div class="dropdown-menu dropdown-menu-right" style="z-index: 1021;">
-                        <button class="dropdown-item" type="button" routerLink="login">Sign in</button>
-                        <button class="dropdown-item" type="button" routerLink="signUp">Sign up</button>
+                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                        My Account
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" style="z-index: 1021">
+                        <button class="dropdown-item" type="button" routerLink="login">
+                            Sign in
+                        </button>
+                        <button class="dropdown-item" type="button" routerLink="signUp">
+                            Sign up
+                        </button>
                     </div>
                 </div>
                 <!-- <div class="btn-group mx-2">
@@ -36,7 +42,7 @@
                     </div>
                 </div> -->
             </div>
-           
+
             <div class="d-inline-flex align-items-between d-block d-lg-none">
                 <!-- <a routerLink="" class="btn px-0 ml-2">
                     <i class="fas fa-heart text-dark"></i>
@@ -44,12 +50,14 @@
                 </a> -->
                 <a routerLink="cart" class="btn px-0 ml-2">
                     <i class="fas fa-shopping-cart text-dark"></i>
-                    <span class="badge text-dark border border-dark rounded-circle mx-2" style="padding-bottom: 2px;">{{this.mainService.cartNo}}</span>
+                    <span class="badge text-dark border border-dark rounded-circle mx-2" style="padding-bottom: 2px">{{
+                        this.mainService.cartNo }}</span>
                 </a>
 
                 <ng-container *ngIf="mainService.userLoginStatus">
-                    <button class="btn btn-sm btn-light ml-3" type="button">Logout</button>
-    
+                    <button class="btn btn-sm btn-light ml-3" type="button" (click)="logoutUser()">
+                        Logout
+                    </button>
                 </ng-container>
             </div>
         </div>
@@ -62,48 +70,46 @@
             </a>
         </div>
         <div class="col-lg-4 col-6 text-left">
-            <form action="">
+            <!-- <form action="">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for products">
                     <div class="input-group-append">
                         <span class="input-group-text bg-transparent text-warning">
-                            <!-- <i class="fa fa-search"></i> -->
                             <mat-icon>search</mat-icon>
                         </span>
                     </div>
                 </div>
-            </form>
+            </form> -->
         </div>
         <div class="col-lg-4 col-6 text-right" *ngIf="mainService.userLoginStatus">
             <!-- <p class="m-0">Customer Service</p>
             <h5 class="m-0">+012 345 6789</h5> -->
             <p class="m-0">Hello !</p>
-            <h5 class="m-0">{{mainService.userName}}</h5>
-
-
+            <h5 class="m-0">{{ mainService.userName }}</h5>
         </div>
     </div>
 </div>
 
 <!-- topbar end -->
 
- <!-- Navbar Start -->
- <div class="container-fluid bg-dark mb-30 sticky-top">
+<!-- Navbar Start -->
+<div class="container-fluid bg-dark mb-30 sticky-top">
     <div class="row px-xl-5">
         <div class="col-lg-3 d-none d-lg-block">
-            <a class="btn d-flex align-items-center justify-content-between bg-warning w-75 m-1" style="height: 50px; padding: 0 30px;">
+            <a class="btn d-flex align-items-center justify-content-between bg-warning w-75 m-1"
+                style="height: 50px; padding: 0 30px">
                 <h6 class="text-dark m-0" routerLink="cart">
                     <!-- <i class="fa fa-bars mr-2"></i> -->
-                    <i class="fas fa-shopping-cart text-dark mx-2" ></i>
+                    <i class="fas fa-shopping-cart text-dark mx-2"></i>
 
                     Cart
-                
                 </h6>
 
                 <i class="fa fa-angle-down text-dark" data-toggle="collapse" data-target="#navbar-vertical"></i>
             </a>
-            <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 90px); z-index: 999;">
-                <div class="navbar-nav w-100 px-2 ">
+            <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light"
+                id="navbar-vertical" style="width: calc(100% - 90px); z-index: 999">
+                <div class="navbar-nav w-100 px-2">
                     <!-- <div class="nav-item dropdown dropright">
                         <a role="button" class="nav-link dropdown-toggle" data-toggle="dropdown">Dresses
                             <i class="fa fa-angle-right float-right mt-1"></i>
@@ -126,16 +132,21 @@
                     <ng-container *ngFor="let cart of this.mainService.cartList">
                         <div class="nav-item nav-link d-flex justify-content-between">
                             <div>
-                                {{cart.productName}}
+                                {{ cart.productName }}
                             </div>
                             <div>
-                                <i class="fas fa-shopping-bag cursor-pointer mx-3 text-success"></i>
-                                <i class="fas fa-trash text-danger cursor-pointer "></i>
+                                <a role="button" (click)="checkOut(cart)">
+                                    <i class="fas fa-shopping-bag cursor-pointer mx-3 text-success"></i>
+                                </a>
+                                <i class="fas fa-trash text-danger cursor-pointer"></i>
                             </div>
                         </div>
                     </ng-container>
                     <div class="py-2 d-flex justify-content-end">
-                        <button class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#navbar-vertical" routerLink="cart">All Shop</button>
+                        <button class="btn btn-sm btn-outline-primary" data-toggle="collapse"
+                            data-target="#navbar-vertical" routerLink="cart">
+                            All Shop
+                        </button>
                     </div>
                 </div>
             </nav>
@@ -153,7 +164,8 @@
                     <div class="navbar-nav mr-auto py-0">
                         <a routerLink="home" routerLinkActive="active" class="nav-item nav-link">Home</a>
                         <a routerLink="shop" routerLinkActive="active" class="nav-item nav-link">Shop</a>
-                        <a routerLink="myOrder" class="nav-item nav-link" *ngIf="mainService.userLoginStatus">Order Detail</a>
+                        <a routerLink="myOrder" class="nav-item nav-link" *ngIf="mainService.userLoginStatus">Order
+                            Detail</a>
                         <!-- <div class="nav-item dropdown">
                             <a routerLink="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages </a>
                             <div class="dropdown-menu bg-gradient1 rounded-0 border-0 m-0">
@@ -161,29 +173,33 @@
                                 <a routerLink="checkout.html" class="dropdown-item">Checkout</a>
                             </div>
                         </div> -->
-                        <a routerLink="#" class="nav-item nav-link" *ngIf="mainService.userLoginStatus">Profile</a>
+                        <a routerLink="profile" class="nav-item nav-link"
+                            *ngIf="mainService.userLoginStatus">Profile</a>
                         <a routerLink="contact" class="nav-item nav-link">Contact</a>
                         <a routerLink="login" *ngIf="!mainService.userLoginStatus" class="nav-item nav-link">Login</a>
-                        <a routerLink="signUp" *ngIf="!mainService.userLoginStatus" class="nav-item nav-link">Sign Up</a>
+                        <a routerLink="signUp" *ngIf="!mainService.userLoginStatus" class="nav-item nav-link">Sign
+                            Up</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                      <div class="d-flex justify-content-center align-items-center">
-                        <!-- <a  class="btn px-0">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <!-- <a  class="btn px-0">
                             <i class="fas fa-heart text-warning mx-2"></i>
                             <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
                         </a> -->
-                        <a class="btn px-0 ml-3" routerLink="cart">
-                            <i class="fas fa-shopping-cart text-warning mx-2"></i>
-                            <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">{{this.mainService.cartNo}}</span>
-                        </a>
-                        <ng-container *ngIf="mainService.userLoginStatus">
-                            <!-- <button class="btn btn-sm btn-light ml-3" type="button">Logout</button> -->
-                            <span class="ml-3 mt-2 text-light">
-                                <mat-icon class="cursor-pointer" matTooltip="Click to Logout" matTooltipPosition="above" matTooltipClass="bg-danger" (click)="logoutUser()" >input</mat-icon>
-                            </span>
-            
-                        </ng-container>
-                      </div>
+                            <a class="btn px-0 ml-3" routerLink="cart">
+                                <i class="fas fa-shopping-cart text-warning mx-2"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle"
+                                    style="padding-bottom: 2px">{{ this.mainService.cartNo }}</span>
+                            </a>
+                            <ng-container *ngIf="mainService.userLoginStatus">
+                                <!-- <button class="btn btn-sm btn-light ml-3" type="button">Logout</button> -->
+                                <span class="ml-3 mt-2 text-light" role="button">
+                                    <mat-icon matTooltip="Click to Logout"
+                                        matTooltipPosition="above" matTooltipClass="bg-danger"
+                                        (click)="logoutUser()">input</mat-icon>
+                                </span>
+                            </ng-container>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -191,4 +207,3 @@
     </div>
 </div>
 <!-- Navbar End -->
-

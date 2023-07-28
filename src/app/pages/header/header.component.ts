@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
     private routr: Router,
     private dialog:MatDialog) { }
 
+    imageShow:any;
+
   ngOnInit() {
   }
 
@@ -37,6 +39,12 @@ export class HeaderComponent implements OnInit {
     });
     
 
+  }
+
+
+  checkOut(item){
+    this.mainService.checkoutList = [item];
+    this.routr.navigate(['/index/checkout']);
   }
 
 }

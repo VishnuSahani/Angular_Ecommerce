@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EnvServiceService } from 'src/app/services/env-service.service';
 import { MainServiceService } from 'src/app/services/main-service.service';
@@ -17,12 +17,15 @@ export class RecentProductComponent implements OnInit, AfterViewInit {
     private mainService: MainServiceService,
     private _sanitizer : DomSanitizer,
     private router : Router,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    private route:ActivatedRoute
+
 
   ) { }
 
   productList = [];
-
+  productListGlobal = [];
+  categoriesType :any = '';
   ngOnInit() {
     // this.getProductList();
 
@@ -30,6 +33,12 @@ export class RecentProductComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.getProductList();
+
+    this.route.queryParams.subscribe(param=>{
+      this.categoriesType = param['categoryType'];
+     
+
+    })
   }
 
 
@@ -69,6 +78,21 @@ export class RecentProductComponent implements OnInit, AfterViewInit {
         this.mainService.cartNo = this.mainService.cartList.length;
  
         this.productList = mainData;
+        this.productListGlobal = [...mainData];
+      if(this.categoriesType != '' && this.categoriesType != undefined && this.categoriesType != null){
+
+        this.productList = this.productListGlobal.filter((x)=>{
+          if(x['category_id'] == this.categoriesType){
+            return x;
+          }
+        });
+
+        if(this.productList.length == 0){
+          this.productList = this.productListGlobal ;
+          this.toastr.info("Category item not show")
+        }
+      }
+        
  
         console.log("mainData==",mainData);
       }
@@ -103,6 +127,16 @@ export class RecentProductComponent implements OnInit, AfterViewInit {
       
     })
 
+  }
+
+
+  checkOut(item){
+    this.mainService.checkoutList = [item];
+    this.router.navigate(['/index/checkout']);
+  }
+
+  showAllProduct(){
+    this.productList = [...this.productListGlobal];
   }
 
 }

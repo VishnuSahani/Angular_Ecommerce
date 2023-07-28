@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NavigationExtras, Router } from '@angular/router';
 import { EnvServiceService } from 'src/app/services/env-service.service';
 import { MainServiceService } from 'src/app/services/main-service.service';
 
@@ -13,7 +14,8 @@ export class CategoriesComponent implements OnInit {
   constructor(
     public userMainService:MainServiceService,
     private env:EnvServiceService,
-    private _sanitizer : DomSanitizer
+    private _sanitizer : DomSanitizer,
+    private router : Router
   ) { }
 
   categoriesItems = [];// [1,2,3,4,5,6,7,8]
@@ -48,6 +50,20 @@ export class CategoriesComponent implements OnInit {
         console.log("mainData==",mainData);
       }
     })
+  }
+
+
+  showCategoryProduct(item){
+
+    let navigationExtras : NavigationExtras = {
+      queryParams:{
+        "categoryType":item.id
+      }
+    }
+
+
+    this.router.navigate(['/index/shop'],navigationExtras);
+
   }
 
 

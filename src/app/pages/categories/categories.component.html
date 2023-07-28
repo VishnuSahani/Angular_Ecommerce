@@ -4,7 +4,7 @@
     <div class="row px-xl-5 pb-3">
         <ng-container *ngFor="let item of categoriesItems ">
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <a class="text-decoration-none" href="#">
+                <a class="text-decoration-none" role="button" (click)="showCategoryProduct(item)">
                     <div class="cat-item d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
                             <!-- <img class="img-fluid" src="assets/img/category1.webp" alt=""> -->
@@ -16,7 +16,7 @@
                                 {{item.category_name}}
 
                             </h6>
-                            <small class="text-body">100 Products</small>
+                            <!-- <small class="text-body">100 Products</small> -->
                         </div>
                     </div>
                 </a>

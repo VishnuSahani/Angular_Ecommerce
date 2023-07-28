@@ -18,6 +18,7 @@ import { MyOrderComponent } from './pages/my-order/my-order.component';
 import { RecentProductComponent } from './pages/recent-product/recent-product.component';
 import { OrderDetailsComponent } from './vsAdmin/order-details/order-details.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,9 @@ const routes: Routes = [
       {path:"shop", component:RecentProductComponent},
       {
         path:"contact", component:ContactComponent
+      },
+      {
+        path:"profile", component:UserProfileComponent
       }
 
     ]

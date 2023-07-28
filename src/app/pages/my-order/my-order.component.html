@@ -66,96 +66,112 @@
 
       <!-- new method to show order -->
 
-      <table class="table table-ligth">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">Order ID</th>
-            <th scope="col">Price</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Delivery Date</th>
-
-            <th scope="col">Payment</th>
-            <th scope="col">Statue</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let item of mainOrderList; let i = index">
-          <tr role="button" (click)="expandTableRow(item)">
-            <td>1000{{ item.orderId }}</td>
-            <td>{{ item.totalAmount }}</td>
-            <td>{{ item.productQuantityNew }}</td>
-            <td>{{ item.createdDate }}</td>
-
-            <td class="text-center1">
-              <span class="badge badge-success">{{ item.paymentMode }}</span>
-            </td>
-            <td>
-              <span class="badge badge-warning">{{ item.shippingStatus }}</span>
-            </td>
-
-            <td class="text-center">
-              <!-- <ng-container *ngIf="item.shippingStatus =='Received'">
-                            <mat-icon class="deletBtn"  matTooltip="Cancel Order" matTooltipPosition="above" (click)="cancelOrderItem(item)">delete</mat-icon>
-                        </ng-container> -->
-              <button type="button" class="btn btn-sm btn-success">Show Details</button>
-            </td>
-          </tr>
-
-          <tr [hidden]="!item.isExpand" >
-            <td colspan="7">
-              <div class="bg-white border">
-
-                <table class="table table-light align-item-center">
-                    <thead class="table-danger">
-                      <tr>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price </th>
-                        <th scope="col">Quantity</th>                        
-                        <th scope="col">Image</th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                    <tbody >
-                      <tr *ngFor="let subitem of item.productListInfo;let j=index">
-                        <td>{{subitem.productName}}</td>
-                        <td>{{subitem.productPrice}}</td>
-                        <td>{{subitem.productQuantity}}</td>
-                        
-                        <td>
-                            <ng-container *ngIf="subitem.image != '';else noImg">
-                                <img [src]="subitem.image" alt="" class="img-fluid" style="height: 50px;width: 50px;">
-    
-                            </ng-container>
-                            <ng-template #noImg>
-                                No image
-                            </ng-template>
-                        </td>
-    
+      <div class="table-responsive">
+        <table class="table table-ligth">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Order ID</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Delivery Date</th>
+  
+              <th scope="col">Payment</th>
+              <th scope="col">Statue</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of mainOrderList; let i = index">
+            <tr role="button" (click)="expandTableRow(item)">
+              <td>1000{{ item.orderId }}</td>
+              <td>{{ item.totalAmount }}</td>
+              <td>{{ item.productQuantityNew }}</td>
+              <td>{{ item.mobile }}</td>
+              <td>{{ item.createdDate }}</td>
+  
+              <td class="text-center1">
+                <span class="badge badge-success">{{ item.paymentMode }}</span>
+              </td>
+              <td>
+                <span class="badge badge-warning">{{ item.shippingStatus }}</span>
+              </td>
+  
+              <td class="text-center">
+                <!-- <ng-container *ngIf="item.shippingStatus =='Received'">
+                              <mat-icon class="deletBtn"  matTooltip="Cancel Order" matTooltipPosition="above" (click)="cancelOrderItem(item)">delete</mat-icon>
+                          </ng-container> -->
+                <button type="button" class="btn btn-sm btn-success">Show Details</button>
+              </td>
+            </tr>
+  
+            <tr [hidden]="!item.isExpand" >
+              <td colspan="8">
+                <div class="bg-white border">
+  
+                  <table class="table table-light align-item-center">
+                      <thead class="table-danger">
+                        <tr>
+                          <th scope="col">Product</th>
+                          <th scope="col">Price </th>
+                          <th scope="col">Quantity</th>                        
+                          <th scope="col">Image</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody >
+                        <tr *ngFor="let subitem of item.productListInfo;let j=index">
+                          <td>{{subitem.productName}}</td>
+                          <td>{{subitem.productPrice}}</td>
+                          <td>{{subitem.productQuantity}}</td>
+                          
+                          <td>
+                              <ng-container *ngIf="subitem.image != '';else noImg">
+                                  <img [src]="subitem.image" alt="" class="img-fluid" style="height: 50px;width: 50px;">
+      
+                              </ng-container>
+                              <ng-template #noImg>
+                                  No image
+                              </ng-template>
+                          </td>
+      
+                         
+                  
+      
+                          <td class="text-center">
+                              <ng-container *ngIf="item.shippingStatus =='Received'">
+                                  <mat-icon class="deletBtn"  matTooltip="Cancel Order" matTooltipPosition="above" (click)="cancelOrderItem(subitem,item)">delete</mat-icon>
+                              </ng-container>
+  
+                              <!-- <mat-icon class="deletBtn"  matTooltip="Cancel Order" matTooltipPosition="above" (click)="cancelOrderItem(subitem,item)">delete</mat-icon> -->
+      
+                          </td>
                        
+      
+                        
+      
+                        </tr>
+  
+                        <tr>
+                          <td colspan="6" class="bg-dark text-white">
+                            <span class="fw-bold">Delivery Address :-</span>
+                            Street - {{item?.areaStreet}} ,
+                            Landmark - {{item?.landmark}} ,
+                            City - {{item?.city}} ,
+                            ({{item?.state}}) -
+                             Pincode - {{item?.pinCode}}
+  
+                          </td>
+                        </tr>
+                       
+                      </tbody>
+                    </table>
                 
-    
-                        <td class="text-center">
-                            <ng-container *ngIf="item.shippingStatus =='Received'">
-                                <mat-icon class="deletBtn"  matTooltip="Cancel Order" matTooltipPosition="above" (click)="cancelOrderItem(subitem,item)">delete</mat-icon>
-                            </ng-container>
-
-                            <mat-icon class="deletBtn"  matTooltip="Cancel Order" matTooltipPosition="above" (click)="cancelOrderItem(subitem,item)">delete</mat-icon>
-    
-                        </td>
-                     
-    
-                      
-    
-                      </tr>
-                     
-                    </tbody>
-                  </table>
-              
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

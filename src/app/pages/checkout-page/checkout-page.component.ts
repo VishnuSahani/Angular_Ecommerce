@@ -69,42 +69,42 @@ export class CheckoutPageComponent implements OnInit {
 
   orderPlaced(){
     
-    if(this.fullName.length == 0){
+    if(this.fullName == '' || this.fullName == null || this.fullName == undefined || this.fullName.length == 0){
       this.toaster.error("Please enter a full name","Name is required");
       return;
     }
 
-    if(this.emailId.length == 0){
+    if(this.emailId == '' || this.emailId == null || this.emailId == undefined || this.emailId.length == 0){
       this.toaster.error("Please enter a Email Id","Email is required");
       return;
     }
 
-    if(this.mobile.length == 0){
+    if(this.mobile == '' || this.mobile == null || this.mobile == undefined || this.mobile.length == 0){
       this.toaster.error("Please enter a Contact Number","Mobile number is required");
       return;
     }
 
-    if(this.areaStreet.length == 0){
+    if(this.areaStreet == '' || this.areaStreet == null || this.areaStreet == undefined || this.areaStreet.length == 0){
       this.toaster.error("Please enter a Address 1","Address 1 is required");
       return;
     }
 
-    if(this.landmark.length == 0){
+    if(this.landmark == '' || this.landmark == null || this.landmark == undefined || this.landmark.length == 0){
       this.toaster.error("Please enter a Address 2 / Landmark","Address 2 is required");
       return;
     }
 
-    if(this.city.length == 0){
+    if(this.city == '' || this.city == null || this.city == undefined || this.city.length == 0){
       this.toaster.error("Please enter a City","City is required");
       return;
     }
 
-    if(this.state.length == 0){
+    if(this.state == '' || this.state == null || this.state == undefined || this.state.length == 0){
       this.toaster.error("Please enter a State is","State is required");
       return;
     }
 
-    if(this.pinCode.length == 0){
+    if(this.pinCode == '' || this.pinCode == null || this.pinCode == undefined || this.pinCode.length == 0){
       this.toaster.error("Please enter a Pincode / ZIP code","ZIP Code is required");
       return;
     }
