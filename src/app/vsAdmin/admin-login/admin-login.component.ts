@@ -16,6 +16,12 @@ export class AdminLoginComponent implements OnInit {
   public eventSubject = new Subject<any>();
   count :number = 0;
   result:any;
+
+  // 
+
+  adminId : any = "admin";
+  adminPassword : any = "123456";
+  errorMsg = "";
   
   ngOnInit() {
     this.eventSubject.asObservable();
@@ -28,7 +34,37 @@ export class AdminLoginComponent implements OnInit {
 
   adminLogin(){
     //alert("Hello")
-    this.router.navigate(["/adminPanal"])
+    if(this.adminId == '' || this.adminId == undefined || this.adminId == null){
+      this.errorMsg = "Admin Id is required";
+      return;
+    }else{
+      this.errorMsg = "";
+
+    }
+
+
+    if(this.adminPassword == '' || this.adminPassword == undefined || this.adminPassword == null){
+      this.errorMsg = "Admin password is required";
+      return;
+    }else{
+      this.errorMsg = "";
+
+    }
+
+    if(this.adminId == 'admin'){
+      if(this.adminPassword == '123456'){
+        this.router.navigate(["/adminPanal"])
+
+      }else{
+        this.errorMsg = "Invalid Admin Password."
+
+      }
+
+    }else{
+      this.errorMsg = "Invalid Admin Id."
+    }
+
+
   }
 
   emitEvent() {

@@ -17,15 +17,18 @@
 
     
                         <div class="form-group">
-                            <label for="userName">UserName / Email ID</label>
-                            <input type="text" name="userName" id="userName" class="form-control">
+                            <label for="userName">Admin ID</label>
+                            <input type="text" name="userName" id="userName" name="adminId" [(ngModel)]="adminId" class="form-control">
                         </div>
 
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="text" name="password" id="password" class="form-control">
+                            <label for="password">Admin Password</label>
+                            <input type="text" name="password" id="password" name="adminPassword" [(ngModel)]="adminPassword"  class="form-control">
                         </div>
                         <div class="text-center pt-1 mb-5 pb-1">
+                          <div class="my-2 text-danger d-flex justify-content-start">
+                            {{errorMsg}}
+                          </div>
                           <!-- routerLink="/adminPanal" -->
                           <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" (click)="adminLogin()"  type="button">Log
                             in</button>
