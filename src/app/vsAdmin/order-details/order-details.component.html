@@ -1,51 +1,134 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="d-flex justify-content-between my-3">
-                <div class="">
-                    <input type="text" class="form-control" placeholder="Search Order">
-                </div>
-                <button class="btn btn-success" >Export</button>
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-end my-3">
+        <!-- <span></span> -->
+        <!-- <button class="btn btn-sm btn-success" >Cart</button> -->
+
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+              <label for="searchUser" class="form-label">Filter (Order Id, Mobile, Status) <span class="text-danger">*</span></label>
+              <input type="text" placeholder="Search Order Id" (keyup)="filterOrderData($event.target.value)"
+                class="form-control">
             </div>
-
-            <table class="table table-light">
-                <thead class="table-dark">
-                  <tr>
-                    <th scope="col">Order ID</th>
-                    <th scope="col">Customer</th>
-                    <th scope="col">Product</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Delivery Date</th>
-                    <th scope="col">Delivery Status</th>
-                    <th scope="col">Payment</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody class="">
-                  <tr *ngFor="let order of orderDetailList" class="border-bottom">
-                    <td>{{order.orderId}}</td>
-                    <td>{{order.customerName}}</td>
-                    <td>{{order.orderItem}}</td>
-                    <td>{{order.price}}</td>
-                    <td>{{order.quantity}}</td>
-                    <td>{{order.deliveryDate}}</td>
-                    <td>
-                        <select class="form-control" name="changeStatus" id="changeStatus" value="{{order.status}}">
-                            <option value="Received">Received (1)</option>
-                            <option value="Shipping">Shipping (2)</option>
-                            <option value="Completed">Completed (3)</option>
-                            <option value="Cancel">Cancel (0)</option>
-                        </select>
-                    </td>
-                    <td>{{order.payment}}</td>
-                    <td></td>
-                  </tr>
-                 
-                </tbody>
-              </table>
-
+          </div>
         </div>
-    </div>
-</div>
+      </div>
 
+      <div class="table-responsive">
+        <table class="table table-ligth">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Order ID</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Order Date</th>
+
+              <th scope="col">Payment</th>
+              <th scope="col">Statue</th>
+              <th class="text-center" scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of mainOrderList; let i = index">
+            <tr role="button">
+              <!-- <td>IDL1000{{ item.orderId }}</td> -->
+              <td>{{ item.orderIdTmp }}</td>
+              <td>{{ item.totalAmount }}</td>
+              <td>{{ item.productQuantityNew }}</td>
+              <td>{{ item.mobile }}</td>
+              <td>{{ item.createdDate }}</td>
+
+              <td class="text-center1">
+                <span class="badge badge-success">{{ item.paymentMode }}</span>
+              </td>
+              <td>
+                <!-- <span class="badge badge-warning">{{ item.shippingStatus }}</span> -->
+                <select class="form-control" name="changeStatus" (change)="changeOrderStatus($event.target.value,item)"
+                  id="changeStatus" value="{{item.shippingStatus}}">
+                  <option value="Received">Received (1)</option>
+                  <option value="Shipping">Shipping (2)</option>
+                  <option value="Completed">Completed (3)</option>
+                  <option value="Cancel">Cancel (0)</option>
+                </select>
+              </td>
+
+              <td class="text-center">
+                <!-- <ng-container *ngIf="item.shippingStatus =='Received'">
+                              <mat-icon class="deletBtn"  matTooltip="Cancel Order" matTooltipPosition="above" (click)="cancelOrderItem(item)">delete</mat-icon>
+                          </ng-container> -->
+                <button type="button" (click)="expandTableRow(item)" class="btn btn-sm btn-success">Show
+                  Details</button>
+              </td>
+            </tr>
+
+            <tr [hidden]="!item.isExpand">
+              <td colspan="8">
+                <div class="bg-white border">
+
+                  <table class="table table-light align-item-center">
+                    <thead class="table-danger">
+                      <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price </th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Image</th>
+                        <!-- <th scope="col">Comment</th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let subitem of item.productListInfo;let j=index">
+                        <td>{{subitem.productName}}</td>
+                        <td>{{subitem.productPrice * subitem.productQuantity}}</td>
+                        <td>{{subitem.productQuantity}}</td>
+
+                        <td>
+                          <ng-container *ngIf="subitem.image != '';else noImg">
+                            <img [src]="subitem.image" alt="" class="img-fluid" style="height: 50px;width: 50px;">
+
+                          </ng-container>
+                          <ng-template #noImg>
+                            No image
+                          </ng-template>
+                        </td>
+
+
+
+
+                        <!-- <td class="text-center">
+                             
+                              (click)="cancelOrderItem(subitem,item)"
+                              <mat-icon class="deletBtn"  matTooltip="Drop message" matTooltipPosition="above" >message</mat-icon>
+      
+                          </td> -->
+
+
+
+
+                      </tr>
+
+                      <tr>
+                        <td colspan="6" class="bg-dark text-white">
+                          <span class="fw-bold">Delivery Address :-</span>
+                          Street - {{item?.areaStreet}} ,
+                          Landmark - {{item?.landmark}} ,
+                          City - {{item?.city}} ,
+                          ({{item?.state}}) -
+                          Pincode - {{item?.pinCode}}
+
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

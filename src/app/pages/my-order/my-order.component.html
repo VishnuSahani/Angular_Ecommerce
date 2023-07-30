@@ -74,7 +74,7 @@
               <th scope="col">Price</th>
               <th scope="col">Quantity</th>
               <th scope="col">Mobile</th>
-              <th scope="col">Delivery Date</th>
+              <th scope="col">Order Date</th>
   
               <th scope="col">Payment</th>
               <th scope="col">Statue</th>
@@ -83,7 +83,7 @@
           </thead>
           <tbody *ngFor="let item of mainOrderList; let i = index">
             <tr role="button" (click)="expandTableRow(item)">
-              <td>1000{{ item.orderId }}</td>
+              <td>IDL1000{{ item.orderId }}</td>
               <td>{{ item.totalAmount }}</td>
               <td>{{ item.productQuantityNew }}</td>
               <td>{{ item.mobile }}</td>

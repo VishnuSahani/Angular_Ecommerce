@@ -1,0 +1,115 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+            <div class="card my-2">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <h4 class="text-center">Profile Photo</h4>
+                    </div> 
+                    <div class="my-2 text-center">
+                        <!-- <img src="assets/img/profilePhoto/Profile-Male.png" style="height: 250px;" class="img-fluid" alt="profile Photo"> -->
+                        <img [src]="data.userdetailsPhoto" style="height: 250px;width: 250px;" class="img-fluid rounded-circle img-thumbnail" alt="profile Photo">
+                    </div>
+
+                    <div class="fort-weight-bold text-center">{{data.userDetailsFullName}}</div>
+
+                    <!-- <div class="mb-1">
+                        <label for="profilePhoto"></label>
+                        <input type="file" class="form-control" (change)="handleFileSelect($event)">
+                    </div>
+                    <div class="mt-2 text-right">
+                        <button type="button" class="btn btn-sm btn-secondary" (click)="updateProfilePhoto()">Upload Image</button>
+                    </div> -->
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xl-8 col-lg-8 col-md-6 col-sm-12 col-12">
+            <div class="card my-2">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Settings</h4>
+                    </div>
+                    <form >
+                        <div class="row mt-2">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-2">
+                                <label for="userName" class="form-label">Name <span class="text-danger">*</span></label>
+                                <input type="text" id="userName" [value]="data.userDetailsFullName" class="form-control" placeholder="User Name" readonly='true' disabled='true'>
+
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-2">
+                                <label for="emailID" class="form-label">Email <span class="text-danger">*</span></label>
+                                <input type="email" id="emailId"  [value]="data.userDetailsEmail" class="form-control" placeholder="Email Id" readonly='true' disabled='true'>
+                            
+
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-2">
+                                <label for="userPassword" class="form-label">Password <span class="text-danger">*</span></label>
+                                <input type="text" id="userPassword"  [value]="data.userDetailsPassword" class="form-control" placeholder="User Password" readonly='true' disabled='true'>
+
+                                
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-2">
+                                <label for="mobile" class="form-label">Mobile <span class="text-danger">*</span></label>
+                                <input type="text" id="mobile"  [value]="data.userDetailsMobile" class="form-control" placeholder="User Password" readonly='true' disabled='true'>
+
+                                
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-2">
+                                <label for="dob" class="form-label">DOB <span class="text-danger">*</span></label>
+                                <input type="date" id="dob" class="form-control" [value]="data.userDetailsDob"  formControlName="dob" readonly='true' disabled='true'>
+                                
+                            </div>
+                            
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-2">
+                                <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
+                                <input type="text" id="gender" class="form-control" [value]="data.userDetailsGender"  formControlName="gender" readonly='true' disabled='true'>
+                               
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-2">
+                                <label for="areaStreet" class="form-label">Area Street <span class="text-danger">*</span></label>
+                                <input type="text" id="areaStreet" class="form-control"  [value]="data.userDetailsAreaStreet" placeholder="Enter Area Street" readonly='true' disabled='true'>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-2">
+                                <label for="landmark" class="form-label">Landmark <span class="text-danger">*</span></label>
+                                <input type="text" id="landmark" class="form-control"  [value]="data.userDetailsLandmark" placeholder="Enter Landmark" readonly='true' disabled='true'>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-2">
+                                <label for="city" class="form-label">City <span class="text-danger">*</span></label>
+                                <input type="text" id="city" class="form-control" [value]="data.userDetailsCity" placeholder="Enter City" readonly='true' disabled='true'>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-2">
+                                <label for="pinCode" class="form-label">Pincode <span class="text-danger">*</span></label>
+                                <input type="text" id="pinCode" class="form-control"  [value]="data.userDetailsPincode" placeholder="Enter Pincode" readonly='true' disabled='true'>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-2">
+                                <label for="state" class="form-label">State <span class="text-danger">*</span></label>
+                                <input type="text" id="state" class="form-control"  [value]="data.userDetailsState" placeholder="Enter State" readonly='true' disabled='true'>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-2">
+                                <label for="registerDate" class="form-label">Sign Up Date <span class="text-danger">*</span></label>
+                                <input type="text" id="registerDate" class="form-control"  [value]="data.userDetailsCreateDate"  readonly='true' disabled='true'>
+                            </div>
+
+                        </div>
+                        <div class="my-2">
+                            <!-- [disabled='true']="userDetails.invalid" -->
+                            <button type="button" [mat-dialog-close]="true"  class="btn btn-sm btn-secondary">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

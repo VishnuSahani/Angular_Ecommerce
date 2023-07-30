@@ -30,6 +30,9 @@ export class AppComponent implements OnInit{
     console.log("query param test",param1)
     //alert(param1)
 
+//     this.router.navigate(['admin']);
+// return;
+
     if(param1 == 'idealCart'){
 
     // this.router.navigate(['adminPanal']); // without login

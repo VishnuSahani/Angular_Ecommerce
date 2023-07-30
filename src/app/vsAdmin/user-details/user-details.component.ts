@@ -7,6 +7,7 @@ import { MainServiceService } from 'src/app/services/main-service.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { AdminEnvService } from '../services/admin-env.service';
 import { AdminMainServiceService } from '../services/admin-main-service.service';
+import { AdminUserProfileComponent } from '../dialog/admin-user-profile/admin-user-profile.component';
 
 @Component({
   selector: 'app-user-details',
@@ -22,13 +23,15 @@ export class UserDetailsComponent implements OnInit {
     private dialog : MatDialog,
     private adminMainServices:AdminMainServiceService,
     private adminEnv : AdminEnvService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
 
   ) { }
 
   userDetailsList = [];
+  userDetailsList2 = [];
 
   ngOnInit() {
+    this.adminMainServices.boardHeading ="Users Details";
 
     this.getUserDetails();
   }
@@ -57,6 +60,7 @@ export class UserDetailsComponent implements OnInit {
         });
 
         this.userDetailsList = mainData;
+        this.userDetailsList2 = [...mainData];
       }    
     });
   }
@@ -97,8 +101,29 @@ export class UserDetailsComponent implements OnInit {
   }
 
 
-  editProductDetails(item){
+  showUserProfile(item){
 
+    this.dialog.open(AdminUserProfileComponent,{
+      data:item
+    });
+
+  }
+
+
+  filterUserData(val){
+    
+    val = val.trim();
+
+    if(val.length == 0){
+      this.userDetailsList = [...this.userDetailsList2];
+      return;
+    }
+    this.userDetailsList = this.userDetailsList2.filter((x)=>{
+      // if((x.userDetailsFullName).toLowerCase().includes(val.toLowerCase())){
+      if((x.userDetailsFullName).toLowerCase().startsWith(val.toLowerCase())){
+        return x;
+      }
+    })
   }
 
 }
