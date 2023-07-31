@@ -42,6 +42,8 @@ import { OrderDetailsComponent } from './vsAdmin/order-details/order-details.com
 import { ContactComponent } from './pages/contact/contact.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { AdminUserProfileComponent } from './vsAdmin/dialog/admin-user-profile/admin-user-profile.component';
+import { UserFeedbackComponent } from './vsAdmin/user-feedback/user-feedback.component';
+import { AdminLogoutComponent } from './vsAdmin/dialog/admin-logout/admin-logout.component';
 // import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
@@ -75,6 +77,8 @@ import { AdminUserProfileComponent } from './vsAdmin/dialog/admin-user-profile/a
     ContactComponent,
     UserProfileComponent,
     AdminUserProfileComponent,
+    UserFeedbackComponent,
+    AdminLogoutComponent,
 
 
   ],
@@ -103,7 +107,7 @@ import { AdminUserProfileComponent } from './vsAdmin/dialog/admin-user-profile/a
     MatTooltipModule
   ],
   providers: [],
-  entryComponents:[AdminAddCategoryComponent,ConfirmDialogComponent,UserConfirmDialogComponent,AdminUserProfileComponent],
+  entryComponents:[AdminAddCategoryComponent,ConfirmDialogComponent,UserConfirmDialogComponent,AdminUserProfileComponent,AdminLogoutComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,6 +12,7 @@ export class AdminMainServiceService {
 
   boardHeading :string ='';
   productEditData = null;
+  loginStatus:boolean = false;
 
   apiService(url,requestBody){
 

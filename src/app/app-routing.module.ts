@@ -19,6 +19,7 @@ import { RecentProductComponent } from './pages/recent-product/recent-product.co
 import { OrderDetailsComponent } from './vsAdmin/order-details/order-details.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { UserFeedbackComponent } from './vsAdmin/user-feedback/user-feedback.component';
 
 
 const routes: Routes = [
@@ -63,6 +64,8 @@ const routes: Routes = [
       {path : "addProduct", component : AdminAddProductComponent},
       {path : "userDetails", component : UserDetailsComponent},
       {path : "orderDetails", component : OrderDetailsComponent},
+      {path : "userFeedback", component : UserFeedbackComponent},
+
 
     ]
   }

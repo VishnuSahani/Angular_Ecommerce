@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { AdminMainServiceService } from '../services/admin-main-service.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -10,7 +11,8 @@ import { Subject } from 'rxjs';
 export class AdminLoginComponent implements OnInit {
 
   constructor(
-    private router:Router
+    private router:Router,
+    public mainAdminService: AdminMainServiceService
   ) { }
 
   public eventSubject = new Subject<any>();
@@ -53,6 +55,8 @@ export class AdminLoginComponent implements OnInit {
 
     if(this.adminId == 'admin'){
       if(this.adminPassword == '123456'){
+        // 
+        this.mainAdminService.loginStatus = true;
         this.router.navigate(["/adminPanal"])
 
       }else{

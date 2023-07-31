@@ -146,7 +146,7 @@ export class AdminAddProductComponent implements OnInit {
     var files = evt.target.files;
     var file = files[0];
 
-    if (files && file && (file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg")) {
+    if (files && file && (file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg" || file.type =='image/webp')) {
 
       var reader = new FileReader();
 

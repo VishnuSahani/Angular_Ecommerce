@@ -18,15 +18,15 @@
       <a mat-list-item routerLink="userDetails" routerLinkActive="sideNavLinkHove" class="categoryLink">
         <mat-icon class="mx-2">supervised_user_circle</mat-icon>  All Users
       </a>
-      <a mat-list-item routerLink="feedback" routerLinkActive="sideNavLinkHove" class="categoryLink">
+      <a mat-list-item routerLink="userFeedback" routerLinkActive="sideNavLinkHove" class="categoryLink">
         <mat-icon class="mx-2">mail_outline</mat-icon>  Feedback
       </a>
 
-      <a mat-list-item routerLink="feedback" routerLinkActive="sideNavLinkHove" class="categoryLink">
+      <a mat-list-item (click)="logoutAdmin()" routerLinkActive="sideNavLinkHove" class="categoryLink">
         <mat-icon class="mx-2">logout</mat-icon>  Logout
       </a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <!-- <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a> -->
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-      <div class="d-flex justify-content-end my-3">
+      <div class="d-flex justify-content-start my-3">
         <!-- <span></span> -->
         <!-- <button class="btn btn-sm btn-success" >Cart</button> -->
 
-        <div class="container">
+        <div class="container-fluid">
           <div class="row">
-            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-12 text-start">
               <label for="searchUser" class="form-label">Filter (Order Id, Mobile, Status) <span class="text-danger">*</span></label>
               <input type="text" placeholder="Search Order Id" (keyup)="filterOrderData($event.target.value)"
                 class="form-control">
@@ -21,6 +21,7 @@
           <thead class="table-dark">
             <tr>
               <th scope="col">Order ID</th>
+              <th scope="col">Customer</th>
               <th scope="col">Price</th>
               <th scope="col">Quantity</th>
               <th scope="col">Mobile</th>
@@ -35,6 +36,7 @@
             <tr role="button">
               <!-- <td>IDL1000{{ item.orderId }}</td> -->
               <td>{{ item.orderIdTmp }}</td>
+              <td>{{ item.fullName }}</td>
               <td>{{ item.totalAmount }}</td>
               <td>{{ item.productQuantityNew }}</td>
               <td>{{ item.mobile }}</td>
@@ -64,7 +66,7 @@
             </tr>
 
             <tr [hidden]="!item.isExpand">
-              <td colspan="8">
+              <td colspan="9">
                 <div class="bg-white border">
 
                   <table class="table table-light align-item-center">
