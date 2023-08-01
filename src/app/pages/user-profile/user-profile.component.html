@@ -92,7 +92,17 @@
 
                             <div class="col-xl-6 col-lg-6 col-md-12 col-12 mb-2">
                                 <label for="state" class="form-label">State <span class="text-danger">*</span></label>
-                                <input type="text" id="state" class="form-control"  formControlName="state" placeholder="Enter State">
+                                <!-- <input type="text" id="state" class="form-control"  formControlName="state" placeholder="Enter State"> -->
+                                <!-- stateArr -->
+                                <select type="text" id="state" class="form-control"  formControlName="state">
+                                    <option value="">Select your State</option>
+                                    <ng-container *ngFor="let statename of stateArr">
+
+                                        <option [value]="statename">{{statename}}</option>
+
+                                    </ng-container>
+
+                                    </select>
                             </div>
 
                         </div>

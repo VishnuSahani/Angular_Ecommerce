@@ -54,7 +54,16 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label>State <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" placeholder="Your State" [(ngModel)]="state">
+                        <!-- <input class="form-control" type="text" placeholder="Your State" [(ngModel)]="state"> -->
+                        <select type="text" id="state" class="form-control"  [(ngModel)]="state">
+                            <option value="">Select your State</option>
+                            <ng-container *ngFor="let statename of stateArr">
+
+                                <option [value]="statename">{{statename}}</option>
+
+                            </ng-container>
+
+                            </select>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>ZIP Code <span class="text-danger">*</span></label>
