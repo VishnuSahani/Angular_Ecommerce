@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
+import { EnvServiceService } from 'src/app/services/env-service.service';
 import { AdminMainServiceService } from '../services/admin-main-service.service';
 
 @Component({
@@ -12,7 +14,9 @@ export class AdminLoginComponent implements OnInit {
 
   constructor(
     private router:Router,
-    public mainAdminService: AdminMainServiceService
+    public mainAdminService: AdminMainServiceService,
+    private env : EnvServiceService,
+    private toastr : ToastrService
   ) { }
 
   public eventSubject = new Subject<any>();
@@ -22,7 +26,7 @@ export class AdminLoginComponent implements OnInit {
   // 
 
   adminId : any = "admin";
-  adminPassword : any = "123456";
+  adminPassword : any = "12345";
   errorMsg = "";
   
   ngOnInit() {
@@ -53,20 +57,40 @@ export class AdminLoginComponent implements OnInit {
 
     }
 
-    if(this.adminId == 'admin'){
-      if(this.adminPassword == '123456'){
-        // 
-        this.mainAdminService.loginStatus = true;
-        this.router.navigate(["/adminPanal"])
+    let reqObj = {};
+    reqObj['username'] = this.adminId;
+    reqObj['password'] = this.adminPassword;
 
+    this.mainAdminService.apiService(this.env.mainUrl+"/adminLogin",reqObj).then((respo)=>{
+      if(respo['success']){
+
+            this.mainAdminService.loginStatus = true;
+        this.router.navigate(["/adminPanal"]);
+        this.toastr.success(respo['data'], "Welcome "+respo['userName'])
+        
+        
       }else{
-        this.errorMsg = "Invalid Admin Password."
-
+        this.errorMsg = respo['data'];
+        this.toastr.error(respo['data'], "Unauthenticate user");
       }
+    })
 
-    }else{
-      this.errorMsg = "Invalid Admin Id."
-    }
+    // hard code id
+
+    // if(this.adminId == 'admin'){
+    //   if(this.adminPassword == '123456'){
+    //     // 
+    //     this.mainAdminService.loginStatus = true;
+    //     this.router.navigate(["/adminPanal"])
+
+    //   }else{
+    //     this.errorMsg = "Invalid Admin Password."
+
+    //   }
+
+    // }else{
+    //   this.errorMsg = "Invalid Admin Id."
+    // }
 
 
   }

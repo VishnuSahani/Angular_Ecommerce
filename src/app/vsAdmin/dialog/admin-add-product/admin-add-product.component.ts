@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AdminEnvService } from '../../services/admin-env.service';
 import { AdminMainServiceService } from '../../services/admin-main-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-add-product',
@@ -18,7 +19,8 @@ export class AdminAddProductComponent implements OnInit {
     private adminEnv:AdminEnvService,
     private _sanitizer:DomSanitizer,
     private router:Router,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private toastr : ToastrService
   ) { }
 
   categoryList: any = [];
@@ -105,7 +107,7 @@ export class AdminAddProductComponent implements OnInit {
         Validators.required,
         Validators.pattern(/^[0-9]*$/),
       ]],
-      rating: ['', [
+      rating: ['5', [
         Validators.required,
         Validators.pattern(/^[0-9]*$/),
         Validators.maxLength(8),
@@ -178,9 +180,13 @@ export class AdminAddProductComponent implements OnInit {
   productFormSubmit() {
     // console.log("Form submit", this.productForm.value);
     let reqBody = this.productForm.value;
-    this.showErrorMsg='';
+    this.showErrorMsg=''; //category_name
 
-    let categoryId = reqBody['categoryId'];
+    let categoryId = reqBody['categoryId'] +"___"+this.categoryList.filter((x)=>{
+      if(x.id == reqBody['categoryId']){
+        return x;
+      }
+    })[0]['category_name'] ;
     let productName = reqBody['productName'];
     let productDetails = reqBody['productDetails'];
     let price = reqBody['price'];
@@ -302,6 +308,12 @@ export class AdminAddProductComponent implements OnInit {
       this.adminMainServices.apiService(apiUrl,data).then((respo)=>{
 
         console.log("add product respo==>",respo);
+        if(respo['success']){
+
+          this.toastr.success(respo['data'],"Success")
+        }else{
+          this.toastr.error(respo['data'],"Error")
+        }
         // this.newForm();
         this.router.navigate(['adminPanal/product'])
 

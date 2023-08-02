@@ -49,7 +49,7 @@
                 <!-- <span class="badge badge-warning">{{ item.shippingStatus }}</span> -->
                 <select class="form-control" name="changeStatus" (change)="changeOrderStatus($event.target.value,item)"
                   id="changeStatus" value="{{item.shippingStatus}}">
-                  <option value="Received">Received (1)</option>
+                  <option value="Order Placed">Order Placed (1)</option>
                   <option value="Shipping">Shipping (2)</option>
                   <option value="Completed">Completed (3)</option>
                   <option value="Cancel">Cancel (0)</option>

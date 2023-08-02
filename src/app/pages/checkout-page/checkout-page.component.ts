@@ -114,6 +114,11 @@ export class CheckoutPageComponent implements OnInit {
       return;
     }
 
+    if((this.mobile).toString().length > 10 || (this.mobile).toString().length < 10){
+      this.toaster.error("Please enter 10 digit Contact Number","Mobile Digit Error");
+      return;
+    }
+
     if(this.areaStreet == '' || this.areaStreet == null || this.areaStreet == undefined || this.areaStreet.length == 0){
       this.toaster.error("Please enter a Address 1","Address 1 is required");
       return;
@@ -136,6 +141,11 @@ export class CheckoutPageComponent implements OnInit {
 
     if(this.pinCode == '' || this.pinCode == null || this.pinCode == undefined || this.pinCode.length == 0){
       this.toaster.error("Please enter a Pincode / ZIP code","ZIP Code is required");
+      return;
+    }
+
+    if((this.pinCode).toString().length > 6 || (this.pinCode).toString().length < 6){
+      this.toaster.error("Please enter a Pincode 6 Digit","ZIP Code Digit Error");
       return;
     }
 

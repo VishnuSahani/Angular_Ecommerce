@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './pages/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCheckboxModule, MatDialogModule, MatIconModule, MatInputModule, MatSelectModule, MatTooltipModule } from '@angular/material';
+import { MatCheckboxModule, MatChipsModule, MatDialogModule, MatIconModule, MatInputModule, MatSelectModule, MatTooltipModule } from '@angular/material';
 import { IndexComponent } from './pages/index/index.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { FeaturedProductComponent } from './vsAdmin/featured-product/featured-product.component';
@@ -44,6 +44,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { AdminUserProfileComponent } from './vsAdmin/dialog/admin-user-profile/admin-user-profile.component';
 import { UserFeedbackComponent } from './vsAdmin/user-feedback/user-feedback.component';
 import { AdminLogoutComponent } from './vsAdmin/dialog/admin-logout/admin-logout.component';
+import { FilterPipePipe } from './customPipe/filter-pipe.pipe';
 // import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
@@ -79,6 +80,7 @@ import { AdminLogoutComponent } from './vsAdmin/dialog/admin-logout/admin-logout
     AdminUserProfileComponent,
     UserFeedbackComponent,
     AdminLogoutComponent,
+    FilterPipePipe,
 
 
   ],
@@ -104,7 +106,8 @@ import { AdminLogoutComponent } from './vsAdmin/dialog/admin-logout/admin-logout
     MatSelectModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatChipsModule
   ],
   providers: [],
   entryComponents:[AdminAddCategoryComponent,ConfirmDialogComponent,UserConfirmDialogComponent,AdminUserProfileComponent,AdminLogoutComponent],

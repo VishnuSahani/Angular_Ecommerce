@@ -93,7 +93,7 @@
                 <span class="badge badge-success">{{ item.paymentMode }}</span>
               </td>
               <td>
-                <span class="badge badge-warning">{{ item.shippingStatus }}</span>
+                <span class="badge" [ngClass]="{'badge-warning':item.shippingStatus=='Order Placed','badge-danger':item.shippingStatus=='Shipping','badge-success':item.shippingStatus=='Completed','badge-secondary':item.shippingStatus=='Cancel'}">{{ item.shippingStatus }}</span>
               </td>
   
               <td class="text-center">
@@ -138,7 +138,7 @@
                   
       
                           <td class="text-center">
-                              <ng-container *ngIf="item.shippingStatus =='Received'">
+                              <ng-container *ngIf="item.shippingStatus =='Order Placed'">
                                   <mat-icon class="deletBtn"  matTooltip="Cancel Order" matTooltipPosition="above" (click)="cancelOrderItem(subitem,item)">delete</mat-icon>
                               </ng-container>
   
@@ -162,7 +162,14 @@
   
                           </td>
                         </tr>
-                       
+                        <tr>
+                          <td colspan="6" class="table-dark text-right">
+                            <!-- <span class="fw-bold">Delivery Date :-</span> -->
+                            {{item.shippingStatus == 'Cancel'?'Sorry, Your order is cancel.':'Your order will be delivered within 3-4 days.'}}
+                            
+  
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                 

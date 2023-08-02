@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, OnDestroy } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -10,7 +10,7 @@ import { MainServiceService } from 'src/app/services/main-service.service';
   templateUrl: './recent-product.component.html',
   styleUrls: ['./recent-product.component.css']
 })
-export class RecentProductComponent implements OnInit, AfterViewInit {
+export class RecentProductComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private env:EnvServiceService,
@@ -26,10 +26,18 @@ export class RecentProductComponent implements OnInit, AfterViewInit {
   productList = [];
   productListGlobal = [];
   categoriesType :any = '';
+  searchProduct:any = "";
+  categoryList = [];
   ngOnInit() {
     // this.getProductList();
 
   }
+
+  ngOnDestroy(): void {
+    this.categoryList = [];
+  }
+
+
 
   ngAfterViewInit(): void {
     this.getProductList();
@@ -63,6 +71,12 @@ export class RecentProductComponent implements OnInit, AfterViewInit {
 
         
         mainData.map(x=>{
+
+          x['productRating'] = Array(parseInt(x['productRating'])).fill(parseInt(x['productRating']));
+
+          if(!this.categoryList.includes(x['categoryName'])){
+            this.categoryList.push(x['categoryName'])
+          }
           if(x['productImage'] !=''){
 
            x['buyQty'] = 1;

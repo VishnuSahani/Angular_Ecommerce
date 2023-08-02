@@ -27,10 +27,16 @@ export class FeaturedProductComponent implements OnInit,OnChanges {
 
   featuresItems = [];//[1,2,3,4,5,6,7,8]
   singleProductDetails = {};
+  searchProduct:any = "";
+  categoryList = [];
 
   ngOnInit() {
     console.log("productValue==>",this.productValue);
     this.featuresItems = this.productValue['data'];
+    let uniqueset = new Set(this.featuresItems.map((x)=>{
+      return x['categoryName'];
+    }));
+    this.categoryList = [...uniqueset];
   }
 
   ngOnChanges() {

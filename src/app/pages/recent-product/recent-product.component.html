@@ -1,16 +1,35 @@
 <!-- Products Start -->
-<div class="container-fluid pt-5 pb-3">
-    <div class="d-flex justify-content-between align-items-center">
+<div class="container-fluid pt-2 pb-3">
+    <div class="d-flex justify-content-between align-items-center mb-2">
         <h4 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class=" pr-3">Recent Products</span></h4>
+
+        <div class="">
+            <label for="searchUser" class="form-label">Search Product</label>
+           <div class="d-flex">
+            <input type="text" placeholder="Search Product" class="form-control" [(ngModel)]="searchProduct">
+            <button type="button" class="btn btn-success btn-sm mx-3" (click)="searchProduct= ''">Clear</button>
+
+           </div>
+          </div>
     <ng-container *ngIf="categoriesType != '' && categoriesType != undefined && categoriesType != null">
 
         <button type="button" class="btn btn-sm btn-success" (click)="showAllProduct()">Show all product</button>
 
     </ng-container>
     </div>
+
+    <div class="container d-flex justify-content-center mb-5">
+         <!-- <span class="mr-4">Select Category : -</span> -->
+         <mat-chip-list aria-label="Fish selection">
+            <mat-chip  color="accent" *ngFor="let catItem of categoryList" [selected]="searchProduct == catItem" (click)=" searchProduct= catItem">{{catItem}}</mat-chip>
+           
+            <!-- <mat-chip color="accent" selected>Accent fish</mat-chip> -->
+          </mat-chip-list>
+
+    </div>
     <div class="row px-xl-5">
         
-        <ng-container *ngFor="let item of productList">
+        <ng-container *ngFor="let item of productList | filterPipe:searchProduct">
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
@@ -26,17 +45,22 @@
                     </div>
                     <div class="text-center py-4">
                         <a class="h6 text-decoration-none text-truncate" role="button">{{item.productName}}</a>
+                        <div>
+                            <small>
+                              {{item.productDetails}}
+                            </small>
+                           </div>
                         <div class="d-flex align-items-center justify-content-center mt-2">
                             <h5>₹{{item.productPrice}}</h5>
                             <!-- <h6 class="text-muted ml-2"><del>₹{{item.productPrice}}</del></h6> -->
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
-                            <small class="fa fa-star text-danger mr-1"></small>
-                            <small class="fa fa-star text-danger mr-1"></small>
-                            <small class="fa fa-star text-danger mr-1"></small>
-                            <small class="fa fa-star text-danger mr-1"></small>
-                            <small class="fa fa-star text-danger mr-1"></small>
-                            <small>(99)</small>
+                            <ng-container *ngFor="let star of item.productRating">
+                                <small class="fa fa-star text-danger mr-1"></small>
+
+                            </ng-container>
+                         
+                            <!-- <small>(99)</small> -->
                         </div>
                     </div>
                 </div>

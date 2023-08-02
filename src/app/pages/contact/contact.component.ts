@@ -25,6 +25,7 @@ export class ContactComponent implements OnInit {
   errorMsg:any;
 
   ngOnInit() {
+    this.emailId = this.mainService.userLoginStatus? (this.mainService.userId).toLowerCase():"";
   }
 
 

@@ -1,11 +1,41 @@
  <!-- Products Start -->
+
+
+
  <div class="container-fluid pb-3">
-    <h4 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class=" pr-3">{{productValue?.title}}</span></h4>
+
+   <div class="container">
+    <div class="row d-flex justify-content-between align-items-center mb-2">
+      <h4 class="text-uppercase">
+        <span class=" pr-3">{{productValue?.title}}</span>
+      </h4>
+
+      <div class="">
+        <label for="searchUser" class="form-label">Search Product</label>
+        <div class="d-flex">
+          <input type="text" placeholder="Search Product" class="form-control" [(ngModel)]="searchProduct">
+        <button type="button" class="btn btn-success btn-sm mx-3" (click)="searchProduct= ''">Clear</button>
+        </div>
+
+      </div>
+    </div>
+   </div>
+
+   <div class="container d-flex justify-content-center mb-5">
+    <!-- <span class="mr-4">Select Category : -</span> -->
+    <mat-chip-list aria-label="Fish selection">
+       <mat-chip  color="accent" *ngFor="let catItem of categoryList" [selected]="searchProduct == catItem" (click)=" searchProduct= catItem">{{catItem}}</mat-chip>
+      
+       <!-- <mat-chip color="accent" selected>Accent fish</mat-chip> -->
+     </mat-chip-list>
+
+</div>
+
     <div class="row px-xl-5">
 
       <!-- {{productValue.data.length }} -->
 
-        <ng-container *ngFor="let item of featuresItems">
+        <ng-container *ngFor="let item of featuresItems | filterPipe:searchProduct">
 
             <div class="col-lg-3 col-md-4 col-sm-6 col-12 pb-1">
                 <div class="product-item bg-light mb-4">
@@ -25,7 +55,7 @@
                           </ng-template>
 
 
-                          <a class="btn btn-outline-dark btn-square" role="button" (click)="editProductDetails(item)"><i class="fa fa-image"></i></a>
+                          <!-- <a class="btn btn-outline-dark btn-square" role="button" (click)="editProductDetails(item)"><i class="fa fa-image"></i></a> -->
 
                             <a class="btn btn-outline-dark btn-square" role="button" (click)="editProductDetails(item)"><i class="fa fa-edit"></i></a>
                             <a role="button" class="btn btn-outline-dark btn-square" (click)="forDeleteConfirm(item)"><i class="fa fa-trash"></i></a>
@@ -35,6 +65,11 @@
                         <a class="h6 text-decoration-none text-truncate" >
                           {{item.productName}}
                         </a>
+                       <div>
+                        <small>
+                          {{item.productDetails}}
+                        </small>
+                       </div>
                         <div class="d-flex align-items-center justify-content-center mt-2">
                             <h5>₹{{item.displayPrice}}</h5><h6 class="text-muted ml-2"><del>₹{{item.productPrice}}</del></h6>
                         </div>
